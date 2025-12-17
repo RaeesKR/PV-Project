@@ -10,19 +10,30 @@ package ui.map;
  */
 import main.mainFrame;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
+import model.Player;
+import model.Monster;
 
 public class mapLevel1 extends javax.swing.JPanel {
     /**
      * Creates new form mapLevel1
      */
     private mainFrame mainFrame;
+    private Player player;
+    private Monster monster;
+    // BattleController removed; fight handled in dedicated fight panel
+    
     public mapLevel1(mainFrame mainFrame) {
         initComponents();
         this.mainFrame = mainFrame;
+        // obtain player from mainFrame (if set)
+        this.player = (mainFrame != null) ? mainFrame.getPlayer() : null;
+        // initialize monster for this level
+        this.monster = new Monster("Goblin", 50, 8, 4);
+
     }
     
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,13 +43,8 @@ public class mapLevel1 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnDeff = new javax.swing.JButton();
-        btnAttack = new javax.swing.JButton();
         btnback = new javax.swing.JButton();
-
-        btnDeff.setText("Deffense");
-
-        btnAttack.setText("Attack");
+        btnFightt = new javax.swing.JButton();
 
         btnback.setText("Back");
         btnback.addActionListener(new java.awt.event.ActionListener() {
@@ -47,43 +53,82 @@ public class mapLevel1 extends javax.swing.JPanel {
             }
         });
 
+        btnFightt.setText("Fight!");
+        btnFightt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFighttActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(257, Short.MAX_VALUE)
-                .addComponent(btnAttack)
-                .addGap(157, 157, 157)
-                .addComponent(btnDeff)
-                .addGap(277, 277, 277))
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(btnback)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(btnback))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(315, 315, 315)
+                        .addComponent(btnFightt)))
+                .addContainerGap(369, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(btnback)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 338, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDeff)
-                    .addComponent(btnAttack))
-                .addGap(139, 139, 139))
+                    .addComponent(btnback))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 381, Short.MAX_VALUE)
+                .addComponent(btnFightt)
+                .addGap(92, 92, 92))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
         // TODO add your handling code here:
-        mainFrame.showPanel(new mapLevel6(mainFrame));
+        mainFrame.showPanel(new mapPanel(mainFrame));
     }//GEN-LAST:event_btnbackActionPerformed
+
+    private void btnFighttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFighttActionPerformed
+        // TODO add your handling code here:
+        // Ensure we have a player instance
+        if (this.player == null && this.mainFrame != null) {
+            this.player = this.mainFrame.getPlayer();
+        }
+
+        if (this.player == null) {
+            JOptionPane.showMessageDialog(this, "Player not initialized. Please login first.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Level-specific dialog content
+        String message = "Kamu memasuki level 1. Di hadapanmu muncul seekor Goblin yang tampak agresif. Siap untuk bertarung?";
+
+        // Ask for confirmation to start the fight
+        int confirm = JOptionPane.showConfirmDialog(this, message, "Encounter - Level 1", JOptionPane.YES_NO_OPTION);
+        if (confirm != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        // After dialog is closed, switch to the dedicated fight panel (FightLevel1)
+        if (this.mainFrame != null) {
+            // create first-stage monster (Keroco) for fight
+            Monster fightMonster = new Monster("Keroco", 30, 6, 2);
+            ui.fight.FightLevel1 fightPanel = new ui.fight.FightLevel1(this.mainFrame, this.player, fightMonster);
+            this.mainFrame.showPanel(fightPanel);
+        } else {
+            // This should not happen in normal flow; inform and abort
+            JOptionPane.showMessageDialog(this, "Unable to start fight: mainFrame not available.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+    }//GEN-LAST:event_btnFighttActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAttack;
-    private javax.swing.JButton btnDeff;
+    private javax.swing.JButton btnFightt;
     private javax.swing.JButton btnback;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,12 +10,14 @@ import kyojin_gemu.utils.DatabaseConection;
 import java.sql.Connection;
 import ui.menu.*;
 import ui.auth.*;
-
+import model.Player;
 
 public class mainFrame extends javax.swing.JFrame {
 
+    private JPanel currentPanel;
+    private Player player;
     private javax.swing.JPanel mainPanel;
-
+    
     public mainFrame() {
         setTitle("Game Project - JFrame Form");
         initComponents();
@@ -24,7 +26,6 @@ public class mainFrame extends javax.swing.JFrame {
         testkoneksi();
 
     }
-    
     
 //    koneksi database
     private void testkoneksi(){
@@ -35,7 +36,7 @@ public class mainFrame extends javax.swing.JFrame {
             System.out.println("koneksi gagal");
         }
     }
-    
+//      Pindah Panel
     public void showPanel(JPanel panel) {
         if (mainPanel == null) {
             mainPanel = jPanel1;
@@ -45,6 +46,14 @@ public class mainFrame extends javax.swing.JFrame {
         mainPanel.add(panel, BorderLayout.CENTER);
         mainPanel.revalidate();
         mainPanel.repaint();
+    }
+    
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+     
+    public Player getPlayer() {
+        return player;
     }
     
     /**

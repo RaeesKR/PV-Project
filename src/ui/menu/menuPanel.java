@@ -11,16 +11,22 @@ package ui.menu;
 import main.mainFrame;
 import javax.swing.*;
 import java.awt.event.*;
+import model.Player;
+import ui.map.mapPanel;
 
 public class menuPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form gamePanel
-     */
     private mainFrame mainFrame;
+    private Player player;
+    private JButton btnStart;
+    
     public menuPanel(mainFrame mainFrame) {
         initComponents();
         this.mainFrame = mainFrame;
+    }
+    
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     /**
@@ -56,6 +62,18 @@ public class menuPanel extends javax.swing.JPanel {
             }
         });
 
+        btnInventory = new javax.swing.JButton();
+        btnInventory.setFont(new java.awt.Font("Mistral", 1, 36)); // NOI18N
+        btnInventory.setText("INVENTORY");
+        btnInventory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                // open inventory panel
+                if (mainFrame != null) {
+                    mainFrame.showPanel(new InventoryPanel(mainFrame));
+                }
+            }
+        });
+
         btnExit.setFont(new java.awt.Font("Mistral", 1, 36)); // NOI18N
         btnExit.setText("EXIT");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
@@ -74,6 +92,7 @@ public class menuPanel extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(btnNew)
                     .addComponent(btnOption)
+                    .addComponent(btnInventory)
                     .addComponent(btnExit))
                 .addContainerGap(308, Short.MAX_VALUE))
         );
@@ -86,6 +105,8 @@ public class menuPanel extends javax.swing.JPanel {
                 .addComponent(btnNew)
                 .addGap(18, 18, 18)
                 .addComponent(btnOption)
+                .addGap(18, 18, 18)
+                .addComponent(btnInventory)
                 .addGap(18, 18, 18)
                 .addComponent(btnExit)
                 .addContainerGap(103, Short.MAX_VALUE))
@@ -101,6 +122,64 @@ public class menuPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnOptionActionPerformed
 
+    private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
+        Player p = (mainFrame != null) ? mainFrame.getPlayer() : null;
+        if (p == null) {
+            JOptionPane.showMessageDialog(this, "Player belum diset. Silakan login terlebih dahulu.", "Inventory", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        java.util.List<Object> inv = p.getInventory();
+        if (inv.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Inventory kosong.", "Inventory", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        String[] items = new String[inv.size()];
+        for (int i = 0; i < inv.size(); i++) {
+            Object it = inv.get(i);
+            String label;
+            if (it instanceof model.Weapon) {
+                model.Weapon w = (model.Weapon) it;
+                label = "Weapon: " + w.getName() + " (+" + w.getAttack() + " atk)";
+                if (it.equals(p.getEquippedWeapon())) label += "  [EQUIPPED]";
+            } else if (it instanceof model.Armor) {
+                model.Armor a = (model.Armor) it;
+                label = "Armor: " + a.getName() + " (+" + a.getDefense() + " HP)";
+                if (it.equals(p.getEquippedArmor())) label += "  [EQUIPPED]";
+            } else {
+                label = it.toString();
+            }
+            items[i] = label;
+        }
+
+        int choice = JOptionPane.showOptionDialog(this, "Pilih item:", "Inventory", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, items, items[0]);
+        if (choice < 0 || choice >= inv.size()) return;
+        Object selected = inv.get(choice);
+
+        String[] actions = new String[]{"Equip/Unequip", "Drop", "Batal"};
+        int act = JOptionPane.showOptionDialog(this, "Pilih aksi:", "Item Action", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, actions, actions[0]);
+        if (act == 0) {
+            // Equip or Unequip
+            if (selected instanceof model.Weapon || selected instanceof model.Armor) {
+                if ((selected instanceof model.Weapon && selected.equals(p.getEquippedWeapon())) ||
+                        (selected instanceof model.Armor && selected.equals(p.getEquippedArmor()))) {
+                    p.unequipItem(selected);
+                    JOptionPane.showMessageDialog(this, "Item telah dilepas dari equip.");
+                } else {
+                    p.equipItem(selected);
+                    JOptionPane.showMessageDialog(this, "Item telah dipasang sebagai equipment.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Item ini tidak dapat di-equip.");
+            }
+        } else if (act == 1) {
+            // Drop
+            boolean removed = p.removeItem(selected);
+            if (removed) JOptionPane.showMessageDialog(this, "Item dibuang dari inventory.");
+            else JOptionPane.showMessageDialog(this, "Gagal membuang item.");
+        }
+    }//GEN-LAST:event_btnInventoryActionPerformed
+
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExitActionPerformed
@@ -108,6 +187,7 @@ public class menuPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnInventory;
     private javax.swing.JButton btnNew;
     private javax.swing.JButton btnOption;
     private javax.swing.JLabel jLabel3;

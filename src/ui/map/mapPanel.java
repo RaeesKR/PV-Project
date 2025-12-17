@@ -4,17 +4,18 @@
  */
 package ui.map;
 
-/**
- *
- * @author Dhenis
- */
 import main.mainFrame;
+import ui.menu.*;
 import javax.swing.*;
 import java.awt.event.*;
+import model.Player;
+import ui.map.*;
 
 public class mapPanel extends javax.swing.JPanel {
 
+    private Player player;
     private mainFrame mainFrame;
+    
     public mapPanel() {
         initComponents();
     }
@@ -23,6 +24,11 @@ public class mapPanel extends javax.swing.JPanel {
         initComponents();
         this.mainFrame = mainFrame;
     }
+    
+        public void setPlayer(Player player) {
+        this.player = player;
+    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -34,6 +40,7 @@ public class mapPanel extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        btnback = new javax.swing.JButton();
 
         btnLevel1.setText("Level 1");
         btnLevel1.addActionListener(new java.awt.event.ActionListener() {
@@ -77,6 +84,13 @@ public class mapPanel extends javax.swing.JPanel {
             }
         });
 
+        btnback.setText("Back");
+        btnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,13 +113,19 @@ public class mapPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton5)
                 .addGap(130, 130, 130))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(btnback)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(186, 186, 186)
+                        .addGap(32, 32, 32)
+                        .addComponent(btnback)
+                        .addGap(131, 131, 131)
                         .addComponent(btnLevel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(173, 173, 173)
@@ -159,10 +179,16 @@ public class mapPanel extends javax.swing.JPanel {
         mainFrame.showPanel(new mapLevel6(mainFrame));
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
+        // TODO add your handling code here:
+        mainFrame.showPanel(new storyPanel(mainFrame));
+    }//GEN-LAST:event_btnbackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLevel1;
     private javax.swing.JButton btnLevel2;
+    private javax.swing.JButton btnback;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

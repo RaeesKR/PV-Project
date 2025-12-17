@@ -35,6 +35,7 @@ public class storyPanel extends javax.swing.JPanel {
 
         Story = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btnback = new javax.swing.JButton();
 
         Story.setText("Story");
         Story.addActionListener(new java.awt.event.ActionListener() {
@@ -50,21 +51,35 @@ public class storyPanel extends javax.swing.JPanel {
             }
         });
 
+        btnback.setText("Back");
+        btnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(233, 233, 233)
-                .addComponent(Story)
-                .addGap(131, 131, 131)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(233, 233, 233)
+                        .addComponent(Story)
+                        .addGap(131, 131, 131)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(btnback)))
                 .addContainerGap(330, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(334, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
+                .addComponent(btnback)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 272, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Story)
                     .addComponent(jButton1))
@@ -82,9 +97,15 @@ public class storyPanel extends javax.swing.JPanel {
         mainFrame.showPanel(new mapPanel(mainFrame));
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
+        // TODO add your handling code here:
+        mainFrame.showPanel(new menuPanel(mainFrame));
+    }//GEN-LAST:event_btnbackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Story;
+    private javax.swing.JButton btnback;
     private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

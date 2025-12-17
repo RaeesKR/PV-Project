@@ -6,17 +6,16 @@ package ui.auth;
 import main.mainFrame;
 import ui.menu.*;
 import ui.auth.*;
+import model.Player;
 
 /**
  *
  * @author Dhenis
  */
 public class loginPage extends javax.swing.JPanel {
-
-    /**
-     * Creates new form loginPage
-     */
+    
     private mainFrame mainFrame;
+    
     public loginPage(mainFrame mainFrame) {
         initComponents();
         this.mainFrame = mainFrame;
@@ -140,18 +139,26 @@ public class loginPage extends javax.swing.JPanel {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        final String username = "admin";
-        final String password = "admin123";
+        final String username = "a";
+        final String password = "a";
         
-        if (txtUser.getText().equals(username)&& txtPswd.getText().equals(password)) {
-            mainFrame.showPanel(new menuPanel(mainFrame));
-        }else{
+         if (txtUser.getText().equals(username) && txtPswd.getText().equals(password)) {
+            Player player = new Player(username, 100, 10);
+
+            mainFrame.setPlayer(player);
+            ui.menu.menuPanel menu = new ui.menu.menuPanel(mainFrame);
+            menu.setPlayer(player);
+
+            mainFrame.showPanel(menu);
+        } else {
             txtUser.setText("");
-            txtPswd.setText("");        
-            notif.setText("Login Gagal, Silahkan coba Kembali"); 
+            txtPswd.setText("");
+            notif.setText("Login Gagal, Silahkan coba kembali.");
         }
+    
     }//GEN-LAST:event_btnLoginActionPerformed
 
+    
     private void btnRegisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisActionPerformed
         // TODO add your handling code here:
         mainFrame.showPanel(new registerPage(mainFrame));
