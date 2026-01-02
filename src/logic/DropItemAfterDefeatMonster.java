@@ -12,7 +12,6 @@ public class DropItemAfterDefeatMonster {
         Random rand = new Random();
         java.util.List<Object> drops = new java.util.ArrayList<>();
 
-        // Get catalog lists
         java.util.List<Weapon> weapons = ItemCatalog.getWeapons();
         java.util.List<Armor> armors = ItemCatalog.getArmors();
 
@@ -29,11 +28,10 @@ public class DropItemAfterDefeatMonster {
 
             if (chooseWeapon) {
                 Weapon w = weapons.get(rand.nextInt(weapons.size()));
-                // create a fresh instance to avoid shared references
-                drops.add(new Weapon(w.getName(), w.getAttack()));
+                drops.add(new Weapon(w.getName(), w.getAttack(), w.getImagePath()));
             } else {
                 Armor a = armors.get(rand.nextInt(armors.size()));
-                drops.add(new Armor(a.getName(), a.getDefense()));
+                drops.add(new Armor(a.getName(), a.getDefense(), a.getImagePath()));
             }
         }
 

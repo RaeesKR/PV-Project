@@ -53,15 +53,29 @@ public class Inventory extends javax.swing.JPanel {
 
             JLabel lbl = (JLabel) super.getListCellRendererComponent(
                     list, value, index, isSelected, cellHasFocus);
+            
 
             if (value instanceof Weapon w) {
-                lbl.setText(w.getName() +
-                        " (+" + w.getAttack() + " atk)" +
-                        ((player != null && w.equals(player.getEquippedWeapon())) ? "  [EQUIPPED]" : ""));
+                lbl.setText(w.getName() + ((player != null && w.equals(player.getEquippedWeapon())) ? "  [EQUIPPED]" : ""));
+                java.net.URL url = getClass().getResource(w.getImagePath());
+                if (url != null) {
+                    ImageIcon raw = new ImageIcon(url);
+                    Image scaled = raw.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
+                    lbl.setIcon(new ImageIcon(scaled));
+                } else {
+                    lbl.setIcon(null);
+                }
+
             } else if (value instanceof Armor a) {
-                lbl.setText(a.getName() +
-                        " (+" + a.getDefense() + " HP)" +
-                        ((player != null && a.equals(player.getEquippedArmor())) ? "  [EQUIPPED]" : ""));
+                lbl.setText(a.getName() + ((player != null && a.equals(player.getEquippedArmor())) ? "  [EQUIPPED]" : ""));
+                java.net.URL url = getClass().getResource(a.getImagePath());
+                if (url != null) {
+                    ImageIcon raw = new ImageIcon(url);
+                    Image scaled = raw.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
+                    lbl.setIcon(new ImageIcon(scaled));
+                } else {
+                    lbl.setIcon(null);
+                }
             }
             return lbl;
         }
@@ -93,17 +107,34 @@ public class Inventory extends javax.swing.JPanel {
         Object sel = listItems.getSelectedValue();
         if (sel == null) {
             lblDetail.setText("Pilih item untuk melihat detail.");
+            lblIcon.setIcon(null);
             return;
         }
         if (sel instanceof Weapon) {
             Weapon w = (Weapon) sel;
-            lblDetail.setText("Weapon: " + w.getName() + " - Attack: +" + w.getAttack());
+            lblDetail.setText("Weapon: " + w.getName() + " ( Attack: +" + w.getAttack() + " )");
+            java.net.URL url = getClass().getResource(w.getImagePath());
+            if (url != null) {
+                ImageIcon raw = new ImageIcon(url);
+                Image scaled = raw.getImage().getScaledInstance(48, 48, Image.SCALE_SMOOTH);
+                lblIcon.setIcon(new ImageIcon(scaled));
+            } else {
+                lblIcon.setIcon(null);
+            }
         } else if (sel instanceof Armor) {
             Armor a = (Armor) sel;
-            lblDetail.setText("Armor: " + a.getName() + " - HP Bonus: +" + a.getDefense());
-            lblDetail.getIcon();
+            lblDetail.setText("Armor: " + a.getName() + " ( HP: +" + a.getDefense() + " )");
+            java.net.URL url = getClass().getResource(a.getImagePath());
+            if (url != null) {
+                ImageIcon raw = new ImageIcon(url);
+                Image scaled = raw.getImage().getScaledInstance(48, 48, Image.SCALE_SMOOTH);
+                lblIcon.setIcon(new ImageIcon(scaled));
+            } else {
+                lblIcon.setIcon(null);
+            }
         } else {
             lblDetail.setText(sel.toString());
+            lblIcon.setIcon(null);
         }
     }
 
@@ -153,7 +184,6 @@ public class Inventory extends javax.swing.JPanel {
         }
     }
 
-    // Public API so callers can update the player or force a refresh
     public void setPlayer(Player player) {
         this.player = player;
         refreshAll();
@@ -174,7 +204,6 @@ public class Inventory extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         lblStats = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listItems = new javax.swing.JList<>();
         panelRight = new javax.swing.JPanel();
@@ -182,6 +211,7 @@ public class Inventory extends javax.swing.JPanel {
         btnDrop = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         lblDetail = new javax.swing.JLabel();
+        lblIcon = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/background/UI BACKGROUND.jpg"))); // NOI18N
@@ -192,22 +222,20 @@ public class Inventory extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblStats.setBackground(new java.awt.Color(255, 0, 0));
-        lblStats.setForeground(new java.awt.Color(255, 0, 0));
+        lblStats.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
+        lblStats.setForeground(new java.awt.Color(255, 255, 255));
         lblStats.setText("HP : - / - Attack : -");
-        add(lblStats, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, -1, -1));
+        add(lblStats, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/background/UI BACKGROUND.jpg"))); // NOI18N
-        jLabel3.setText("jLabel2");
-        jLabel3.setEnabled(false);
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 760, 460));
-
-        listItems.setBackground(new java.awt.Color(204, 204, 204));
+        listItems.setBackground(new java.awt.Color(102, 72, 50));
         listItems.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        listItems.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
+        listItems.setForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(listItems);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 780, 480));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 610, 450));
 
-        panelRight.setBackground(new java.awt.Color(153, 153, 153));
+        panelRight.setBackground(new java.awt.Color(143, 94, 65));
         panelRight.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         btnEquip.setText("Equip / Unequip");
@@ -216,7 +244,8 @@ public class Inventory extends javax.swing.JPanel {
 
         btnBack.setText("Back");
 
-        lblDetail.setFont(new java.awt.Font("Viner Hand ITC", 1, 12)); // NOI18N
+        lblDetail.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
+        lblDetail.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout panelRightLayout = new javax.swing.GroupLayout(panelRight);
         panelRight.setLayout(panelRightLayout);
@@ -228,28 +257,36 @@ public class Inventory extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(btnDrop, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(lblDetail, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                .addComponent(lblDetail, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(lblIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addGap(41, 41, 41))
         );
         panelRightLayout.setVerticalGroup(
             panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRightLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelRightLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRightLayout.createSequentialGroup()
-                        .addGroup(panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnEquip)
-                            .addComponent(btnDrop)
-                            .addComponent(btnBack))
-                        .addGap(25, 25, 25))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRightLayout.createSequentialGroup()
-                        .addComponent(lblDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16))))
+                .addGap(20, 20, 20)
+                .addComponent(btnBack)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelRightLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(panelRightLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDrop)
+                    .addComponent(btnEquip))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(panelRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 520, 780, 80));
+        add(panelRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 520, 780, 70));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/background/UI BACKGROUND.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -263,9 +300,9 @@ public class Inventory extends javax.swing.JPanel {
     private javax.swing.JButton btnEquip;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDetail;
+    private javax.swing.JLabel lblIcon;
     private javax.swing.JLabel lblStats;
     private javax.swing.JList<Object> listItems;
     private javax.swing.JPanel panelRight;
