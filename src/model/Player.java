@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Player {
+    private int id;
     private String name;
     private int hp;
     private int attack;
@@ -13,7 +14,8 @@ public class Player {
     private Weapon equippedWeapon = null;
     private Armor equippedArmor = null;
 
-    public Player(String name, int hp, int attack) {
+    public Player(int id, String name, int hp, int attack) {
+        this.id = id;
         this.name = name;
         this.hp = hp;
         this.attack = attack;

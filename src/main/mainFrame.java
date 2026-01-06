@@ -23,19 +23,19 @@ public class mainFrame extends javax.swing.JFrame {
         initComponents();
         mainPanel = jPanel1;
         showPanel(new startPanel(this));
-        testkoneksi();
+//        testkoneksi();
 
     }
     
 //    koneksi database
-    private void testkoneksi(){
-        Connection conn = DatabaseConection.getConnection();
-        if (conn != null) {
-            System.out.println("koneksi oke");
-        }else{
-            System.out.println("koneksi gagal");
-        }
-    }
+//    private void testkoneksi(){
+//        Connection conn = DatabaseConection.getConnection();
+//        if (conn != null) {
+//            System.out.println("koneksi oke");
+//        }else{
+//            System.out.println("koneksi gagal");
+//        }
+//    }
 //      Pindah Panel
     public void showPanel(JPanel panel) {
         if (mainPanel == null) {

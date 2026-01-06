@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package ui.auth;
+import controllers.AuthControllers;
+import kyojin_gemu.utils.UserSession;
 import main.mainFrame;
 import ui.menu.*;
 import ui.auth.*;
@@ -108,21 +110,17 @@ public class loginPage extends javax.swing.JPanel {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        final String username = "a";
-        final String password = "a";
+        AuthControllers auth = new AuthControllers();
+        UserSession session = auth.login(txtUser.getText().trim(), txtPswd.getText().trim());
         
-         if (txtUser.getText().equals(username) && txtPswd.getText().equals(password)) {
-            Player player = new Player(username, 100, 10);
-
+        if (session != null ) {
+            Player player = new Player(session.getUserId(), session.getUserName(), 0, 0);
             mainFrame.setPlayer(player);
-            ui.menu.menuPanel menu = new ui.menu.menuPanel(mainFrame);
-            menu.setPlayer(player);
-
-            mainFrame.showPanel(menu);
-        } else {
-            txtUser.setText("");
-            txtPswd.setText("");
-            notif.setText("Login Gagal, Silahkan coba kembali.");
+            mainFrame.showPanel(new menuPanel(mainFrame));
+            
+            System.out.println(player);
+        }else{
+            notif.setText("Login Gagal");
         }
     
     }//GEN-LAST:event_btnLoginActionPerformed
