@@ -112,6 +112,14 @@ public class registerPage extends javax.swing.JPanel {
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, 98, 36));
 
+        jButton1.setText("Login");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, 98, 36));
+
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/background/TEMPLATE.png"))); // NOI18N
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
@@ -128,15 +136,44 @@ public class registerPage extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPswd1ActionPerformed
 
-    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         mainFrame.showPanel(new loginPage(mainFrame));
-    }//GEN-LAST:event_btnbackActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnRegisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisActionPerformed
+        // TODO add your handling code here:
+        
+        String userName = txtUser.getText().trim();
+        String pwd = txtPswd.getText().trim();
+        String confirPwd = txtPswd1.getText().trim();
+        
+        if (userName.isEmpty() || pwd.isEmpty() || confirPwd.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Semue field Wajib diIsi","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if (!pwd.equals(confirPwd)) {
+            JOptionPane.showMessageDialog(this, "Password dan confirm Password Harus sama!","error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        AuthControllers auth = new AuthControllers();
+        boolean success = auth.register(userName, pwd);
+        
+        if (success) {
+            JOptionPane.showMessageDialog(this, 
+                    "Register Berhasil! ","Sukses",JOptionPane.INFORMATION_MESSAGE);
+            mainFrame.showPanel(new loginPage(mainFrame));
+        }else{
+            JOptionPane.showMessageDialog(this, 
+                    "Register Gagal! ","Eroor",JOptionPane.ERROR_MESSAGE); 
+        }
+    }//GEN-LAST:event_btnRegisActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegis;
-    private javax.swing.JButton btnback;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
