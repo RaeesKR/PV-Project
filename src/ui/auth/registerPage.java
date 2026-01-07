@@ -11,7 +11,6 @@ package ui.auth;
 import controllers.AuthControllers;
 import javax.swing.JOptionPane;
 import main.mainFrame;
-import ui.menu.menuPanel;
 public class registerPage extends javax.swing.JPanel {
 
     /**

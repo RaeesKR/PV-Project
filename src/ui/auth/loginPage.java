@@ -137,7 +137,7 @@ public class loginPage extends javax.swing.JPanel {
         }
     
     }//GEN-LAST:event_btnLoginActionPerformed
-
+    
     
     private void btnRegisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisActionPerformed
         // TODO add your handling code here:
