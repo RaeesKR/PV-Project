@@ -99,6 +99,14 @@ public class registerPage extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, 98, 36));
+
+        jButton1.setText("Login");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 98, 36));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/background/TEMPLATE.png"))); // NOI18N
