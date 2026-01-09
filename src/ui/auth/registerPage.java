@@ -91,23 +91,16 @@ public class registerPage extends javax.swing.JPanel {
                 btnRegisActionPerformed(evt);
             }
         });
-        add(btnRegis, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 98, 36));
+        add(btnRegis, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 360, 98, 36));
 
-        jButton1.setText("Login");
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, 98, 36));
-
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 98, 36));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 40, 20));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/background/TEMPLATE.png"))); // NOI18N
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

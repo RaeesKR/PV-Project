@@ -6,10 +6,7 @@ package main;
 
 import javax.swing.*;
 import java.awt.*;
-import kyojin_gemu.utils.DatabaseConection;
-import java.sql.Connection;
 import ui.menu.*;
-import ui.auth.*;
 import model.Player;
 
 public class mainFrame extends javax.swing.JFrame {
@@ -37,6 +34,7 @@ public class mainFrame extends javax.swing.JFrame {
 //        }
 //    }
 //      Pindah Panel
+    
     public void showPanel(JPanel panel) {
         if (mainPanel == null) {
             mainPanel = jPanel1;
@@ -54,6 +52,10 @@ public class mainFrame extends javax.swing.JFrame {
      
     public Player getPlayer() {
         return player;
+    }
+    
+    public void playMusic() {
+        
     }
     
     /**

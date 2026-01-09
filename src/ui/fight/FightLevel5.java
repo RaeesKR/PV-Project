@@ -226,7 +226,9 @@ public class FightLevel5 extends javax.swing.JPanel {
                     bgBos.setVisible(true);
                 } else {
                     if (mainFrame != null) {
-                        mainFrame.showPanel(new ui.map.mapLevel5(mainFrame));
+                        if (player != null) player.unlockLevel(6);
+                        JOptionPane.showMessageDialog(this, "Selamat! Level 6 terbuka.");
+                        mainFrame.showPanel(new ui.map.mapPanel(mainFrame));
                     }
                 }
             }

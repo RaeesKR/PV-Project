@@ -104,8 +104,9 @@ public class loginPage extends javax.swing.JPanel {
         jLabel4.setText("Login / Register");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 309, -1, -1));
 
-        notif.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        add(notif, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 268, 307, -1));
+        notif.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        notif.setForeground(new java.awt.Color(255, 255, 255));
+        add(notif, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 380, 80, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/background/TEMPLATE.png"))); // NOI18N
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -125,11 +126,12 @@ public class loginPage extends javax.swing.JPanel {
         UserSession session = auth.login(txtUser.getText().trim(), txtPswd.getText().trim());
         
         if (session != null ) {
-            Player player = new Player(session.getUserId(), session.getUserName(), 0, 0);
+            // initialize player with sensible defaults (hp and attack)
+            Player player = new Player(session.getUserId(), session.getUserName(), 100, 10);
             mainFrame.setPlayer(player);
             mainFrame.showPanel(new menuPanel(mainFrame));
             
-            System.out.println(player);
+            System.out.println("Player initialized: hp=" + player.getHp() + ", attack=" + player.getAttack());
         }else{
             notif.setText("Login Gagal");
         }

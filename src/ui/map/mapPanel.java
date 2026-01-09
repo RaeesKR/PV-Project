@@ -23,6 +23,8 @@ public class mapPanel extends javax.swing.JPanel {
     public mapPanel(mainFrame mainFrame) {
         initComponents();
         this.mainFrame = mainFrame;
+        this.player = (this.mainFrame != null) ? this.mainFrame.getPlayer() : null;
+        updateLevelButtons();
     }
     
         public void setPlayer(Player player) {
@@ -34,16 +36,27 @@ public class mapPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         btnLevel1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         btnLevel2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         btnLevel3 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         btnLevel4 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         btnLevel5 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
         btnLevel6 = new javax.swing.JButton();
         btnback = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Level 1");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 250, -1, -1));
 
         btnLevel1.setText("Level 1");
         btnLevel1.setBorderPainted(false);
@@ -56,6 +69,11 @@ public class mapPanel extends javax.swing.JPanel {
         });
         add(btnLevel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 238, 10, 10));
 
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Level 2");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 326, -1, -1));
+
         btnLevel2.setText("Level 2");
         btnLevel2.setBorderPainted(false);
         btnLevel2.setContentAreaFilled(false);
@@ -66,6 +84,11 @@ public class mapPanel extends javax.swing.JPanel {
             }
         });
         add(btnLevel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 313, 10, 10));
+
+        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Level 3");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, -1, -1));
 
         btnLevel3.setText("Level 3");
         btnLevel3.setBorderPainted(false);
@@ -78,6 +101,11 @@ public class mapPanel extends javax.swing.JPanel {
         });
         add(btnLevel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 244, 10, 10));
 
+        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Level 4");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 315, -1, -1));
+
         btnLevel4.setText("Level 4");
         btnLevel4.setBorderPainted(false);
         btnLevel4.setContentAreaFilled(false);
@@ -89,6 +117,11 @@ public class mapPanel extends javax.swing.JPanel {
         });
         add(btnLevel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(352, 336, 10, 10));
 
+        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Level 5");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 271, -1, -1));
+
         btnLevel5.setText("Level 5");
         btnLevel5.setBorderPainted(false);
         btnLevel5.setContentAreaFilled(false);
@@ -99,6 +132,11 @@ public class mapPanel extends javax.swing.JPanel {
             }
         });
         add(btnLevel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 258, 10, 10));
+
+        jLabel7.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Level 6");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(519, 245, -1, -1));
 
         btnLevel6.setText("Level 6");
         btnLevel6.setBorderPainted(false);
@@ -161,6 +199,19 @@ public class mapPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnbackActionPerformed
 
 
+    private void updateLevelButtons() {
+        int unlocked = 1;
+        if (this.mainFrame != null && this.mainFrame.getPlayer() != null) {
+            unlocked = this.mainFrame.getPlayer().getHighestUnlockedLevel();
+        }
+        btnLevel1.setEnabled(unlocked >= 1);
+        btnLevel2.setEnabled(unlocked >= 2);
+        btnLevel3.setEnabled(unlocked >= 3);
+        btnLevel4.setEnabled(unlocked >= 4);
+        btnLevel5.setEnabled(unlocked >= 5);
+        btnLevel6.setEnabled(unlocked >= 6);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLevel1;
     private javax.swing.JButton btnLevel2;
@@ -169,6 +220,12 @@ public class mapPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnLevel5;
     private javax.swing.JButton btnLevel6;
     private javax.swing.JButton btnback;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }

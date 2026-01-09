@@ -229,7 +229,8 @@ public class FightLevel6 extends javax.swing.JPanel {
                     bgBos.setVisible(true);
                 } else {
                     if (mainFrame != null) {
-                        mainFrame.showPanel(new ui.map.mapLevel6(mainFrame));
+                        JOptionPane.showMessageDialog(this, "Selamat! Kamu mengalahkan bos level 6!");
+                        mainFrame.showPanel(new ui.map.mapPanel(mainFrame));
                     }
                 }
             }

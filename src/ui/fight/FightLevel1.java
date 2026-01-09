@@ -52,6 +52,8 @@ public class FightLevel1 extends javax.swing.JPanel {
         bg = new javax.swing.JLabel();
         PlayerArmor = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        notifPlayer = new javax.swing.JLabel();
+        notifMonster = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -94,6 +96,8 @@ public class FightLevel1 extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/fightbg/LEVEL 1Fight.png"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        add(notifPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, -1, -1));
+        add(notifMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeffActionPerformed
@@ -132,6 +136,8 @@ public class FightLevel1 extends javax.swing.JPanel {
     private javax.swing.JButton btnAttck;
     private javax.swing.JButton btnDeff;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel notifMonster;
+    private javax.swing.JLabel notifPlayer;
     // End of variables declaration//GEN-END:variables
 
     private void updateHpLabels() {
@@ -172,6 +178,7 @@ public class FightLevel1 extends javax.swing.JPanel {
         if (attack && monsterAttack) {
             monster.setHp(monster.getHp() - player.getAttack());
             applyDamageToPlayer(monster.getAttack());
+            
         } else if (attack && !monsterAttack) {
             monster.setHp(monster.getHp() - player.getAttack());
         } else if (!attack && monsterAttack) {
@@ -219,6 +226,14 @@ public class FightLevel1 extends javax.swing.JPanel {
                         }
                         updateHpLabels();
                     }
+                }
+                // unlock next level and return to map
+                if (player != null) {
+                    player.unlockLevel(2);
+                }
+                if (mainFrame != null) {
+                    JOptionPane.showMessageDialog(this, "Selamat! Level 2 terbuka.");
+                    mainFrame.showPanel(new ui.map.mapPanel(mainFrame));
                 }
             }
             else {

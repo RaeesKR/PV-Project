@@ -226,7 +226,9 @@ public class FightLevel4 extends javax.swing.JPanel {
                     bgKroco.setVisible(false);
                 } else {
                     if (mainFrame != null) {
-                        mainFrame.showPanel(new ui.map.mapLevel4(mainFrame));
+                        if (player != null) player.unlockLevel(5);
+                        JOptionPane.showMessageDialog(this, "Selamat! Level 5 terbuka.");
+                        mainFrame.showPanel(new ui.map.mapPanel(mainFrame));
                     }
                 }
             }

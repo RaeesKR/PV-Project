@@ -21,7 +21,7 @@ public class DatabaseConection {
     public  static Connection getConnection(){
         try {
             if (conn == null || conn.isClosed()) {
-                Class.forName("com.mysql.cj.jdbc.Driver");
+                Class.forName("com.mysql.jdbc.Driver");
                 conn = DriverManager.getConnection(URL, USER, PASS);
                 System.out.println("Koneksi ke database berhasil!");                
                 

@@ -13,6 +13,17 @@ public class Player {
     private final List<Object> inventory = new ArrayList<>();
     private Weapon equippedWeapon = null;
     private Armor equippedArmor = null;
+    private int highestUnlockedLevel = 1;
+
+    public int getHighestUnlockedLevel() {
+        return highestUnlockedLevel;
+    }
+
+    public void unlockLevel(int level) {
+        if (level > highestUnlockedLevel) {
+            highestUnlockedLevel = Math.min(level, 6);
+        }
+    }
 
     public Player(int id, String name, int hp, int attack) {
         this.id = id;
