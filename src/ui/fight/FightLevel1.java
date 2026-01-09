@@ -6,8 +6,6 @@ package ui.fight;
 
 import main.mainFrame;
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
 import logic.DropItemAfterDefeatMonster;
 import java.util.Random;
 import model.Player;
@@ -81,18 +79,21 @@ public class FightLevel1 extends javax.swing.JPanel {
         });
         add(btnDeff, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 450, 80, 80));
 
+        PlayerHP.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         PlayerHP.setForeground(new java.awt.Color(255, 255, 255));
         PlayerHP.setText("HP Kamu : ");
-        add(PlayerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 22, -1, -1));
+        add(PlayerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, -1));
 
+        PlayerHP1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         PlayerHP1.setForeground(new java.awt.Color(255, 255, 255));
         PlayerHP1.setText("Monster HP :");
-        add(PlayerHP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(608, 22, -1, -1));
+        add(PlayerHP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, -1, -1));
         add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        PlayerArmor.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         PlayerArmor.setForeground(new java.awt.Color(255, 255, 255));
         PlayerArmor.setText("Armor : ");
-        add(PlayerArmor, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 40, -1, -1));
+        add(PlayerArmor, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/fightbg/LEVEL 1Fight.png"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -238,6 +239,10 @@ public class FightLevel1 extends javax.swing.JPanel {
             }
             else {
                 player.setMaxHp(100);
+                // reapply armor bonus if player has armor equipped
+                if (player.getEquippedArmor() != null) {
+                    player.addMaxHp(player.getEquippedArmor().getDefense());
+                }
                 player.restoreFullHp();
                 updateHpLabels();
                 JOptionPane.showMessageDialog(this, "Kamu kalah. HP direset", "Kalah", JOptionPane.INFORMATION_MESSAGE);

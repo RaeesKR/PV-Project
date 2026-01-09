@@ -47,8 +47,8 @@ public class FightLevel2 extends javax.swing.JPanel {
         btnAttck = new javax.swing.JButton();
         btnDeff = new javax.swing.JButton();
         PlayerHP = new javax.swing.JLabel();
-        PlayerHP1 = new javax.swing.JLabel();
         PlayerArmor = new javax.swing.JLabel();
+        PlayerHP1 = new javax.swing.JLabel();
         bgKroco = new javax.swing.JLabel();
         bgBos = new javax.swing.JLabel();
 
@@ -77,17 +77,20 @@ public class FightLevel2 extends javax.swing.JPanel {
         });
         add(btnDeff, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 450, 80, 80));
 
+        PlayerHP.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         PlayerHP.setForeground(new java.awt.Color(255, 255, 255));
         PlayerHP.setText("HP Kamu : ");
-        add(PlayerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 22, -1, -1));
+        add(PlayerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, -1));
 
-        PlayerHP1.setForeground(new java.awt.Color(255, 255, 255));
-        PlayerHP1.setText("Monster HP :");
-        add(PlayerHP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(606, 22, -1, -1));
-
+        PlayerArmor.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         PlayerArmor.setForeground(new java.awt.Color(255, 255, 255));
         PlayerArmor.setText("Armor : ");
-        add(PlayerArmor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
+        add(PlayerArmor, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
+
+        PlayerHP1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        PlayerHP1.setForeground(new java.awt.Color(255, 255, 255));
+        PlayerHP1.setText("Monster HP :");
+        add(PlayerHP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, -1, -1));
 
         bgKroco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/fightbg/LEVEL 2 KROCO 1.png"))); // NOI18N
         add(bgKroco, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -227,8 +230,8 @@ public class FightLevel2 extends javax.swing.JPanel {
                 if (stage == 1) {
                     stage = 2;
                     finished = false;
-                    monster = new Monster("King Orcus", 140, 18, 10);
-                    JOptionPane.showMessageDialog(this, "Orc dikalahkan! Boss muncul!");
+                    monster = new Monster("King Orcus", 140, 23, 10);
+                    JOptionPane.showMessageDialog(this, "AGHHH BERANINYA KAUUU", "King Orcus",JOptionPane.INFORMATION_MESSAGE);
                     updateHpLabels();
                     bgBos.setVisible(true);
                     bgKroco.setVisible(false);
@@ -243,6 +246,10 @@ public class FightLevel2 extends javax.swing.JPanel {
             else {
                 // player lost
                 player.setMaxHp(100);
+                // reapply armor bonus if player has armor equipped
+                if (player.getEquippedArmor() != null) {
+                    player.addMaxHp(player.getEquippedArmor().getDefense());
+                }
                 player.restoreFullHp();
                 updateHpLabels();
                 JOptionPane.showMessageDialog(this, "Kamu kalah. HP direset", "Kalah", JOptionPane.INFORMATION_MESSAGE);

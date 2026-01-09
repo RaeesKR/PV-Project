@@ -12,6 +12,7 @@ import main.mainFrame;
 import model.Player;
 import model.Weapon;
 import model.Armor;
+import ui.map.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -180,7 +181,7 @@ public class Inventory extends javax.swing.JPanel {
 
     private void onBack() {
         if (mainFrame != null) {
-            mainFrame.showPanel(new menuPanel(mainFrame));
+            mainFrame.showPanel(new mapPanel(mainFrame));
         }
     }
 
@@ -243,6 +244,11 @@ public class Inventory extends javax.swing.JPanel {
         btnDrop.setText("Delete");
 
         btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         lblDetail.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
         lblDetail.setForeground(new java.awt.Color(255, 255, 255));
@@ -291,6 +297,11 @@ public class Inventory extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/background/UI.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

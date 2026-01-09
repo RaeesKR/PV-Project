@@ -14,6 +14,7 @@ import java.awt.*;
 import java.awt.event.*;
 import model.Player;
 import model.Monster;
+import ui.menu.*;
 
 public class mapLevel3 extends javax.swing.JPanel {
     /**
@@ -30,7 +31,7 @@ public class mapLevel3 extends javax.swing.JPanel {
         // obtain player from mainFrame (if set)
         this.player = (mainFrame != null) ? mainFrame.getPlayer() : null;
         // initialize monster for this level
-        this.monster = new Monster("Slime", 40, 6, 3);
+        this.monster = new Monster("Slime", 40, 6,3);
 
     }
     
@@ -43,11 +44,40 @@ public class mapLevel3 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnInventory = new javax.swing.JButton();
         btnback = new javax.swing.JButton();
         btnFightt = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
+        setMaximumSize(new java.awt.Dimension(800, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnInventory.setBackground(new java.awt.Color(0,0,0,0));
+        btnInventory.setBorder(javax.swing.BorderFactory.createMatteBorder(
+            0, 1, 0, 1,
+            new java.awt.Color(230,230,230)
+        ));
+        btnInventory.setBorderPainted(false);
+        btnInventory.setContentAreaFilled(false);
+        btnInventory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnInventory.setMaximumSize(new java.awt.Dimension(72, 10));
+        btnInventory.setMinimumSize(new java.awt.Dimension(72, 10));
+        btnInventory.setPreferredSize(new java.awt.Dimension(72, 10));
+        btnInventory.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnInventoryMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnInventoryMouseExited(evt);
+            }
+        });
+        btnInventory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventoryActionPerformed(evt);
+            }
+        });
+        add(btnInventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, 90, 90));
 
         btnback.setText("Back");
         btnback.addActionListener(new java.awt.event.ActionListener() {
@@ -57,13 +87,22 @@ public class mapLevel3 extends javax.swing.JPanel {
         });
         add(btnback, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 16, -1, -1));
 
-        btnFightt.setText("Fight!");
+        btnFightt.setBorderPainted(false);
+        btnFightt.setContentAreaFilled(false);
+        btnFightt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFightt.setFocusable(false);
         btnFightt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFighttActionPerformed(evt);
             }
         });
-        add(btnFightt, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 485, -1, -1));
+        add(btnFightt, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 3, 800, 600));
+
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Klik dimana saja untuk bertarung!");
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/fightbg/LEVEL 3.png"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -87,53 +126,56 @@ public class mapLevel3 extends javax.swing.JPanel {
         }
 
         // Level-specific dialog content
-        String message = "Kamu memasuki level 3. Di hadapanmu muncul seekor Troll besar. Siap untuk bertarung?";
+        String message = "Kamu memasuki level 1. Di hadapanmu muncul seekor Goblin yang tampak agresif. Siap untuk bertarung?";
 
         // Ask for confirmation to start the fight
-        int confirm = JOptionPane.showConfirmDialog(this, message, "Encounter - Level 3", JOptionPane.YES_NO_OPTION);
+        int confirm = JOptionPane.showConfirmDialog(this, message, "Encounter - Level 1", JOptionPane.YES_NO_OPTION);
         if (confirm != JOptionPane.YES_OPTION) {
             return;
         }
 
-        // After dialog is closed, switch to the dedicated fight panel (FightLevel3)
-        try {
-            // Ensure we have mainFrame and player; try to recover from hierarchy if null
-            if (this.mainFrame == null) {
-                java.awt.Component c = SwingUtilities.getWindowAncestor(this);
-                if (c instanceof main.mainFrame) {
-                    this.mainFrame = (main.mainFrame) c;
-                }
-            }
-            if (this.player == null && this.mainFrame != null) {
-                this.player = this.mainFrame.getPlayer();
-            }
-
-            if (this.mainFrame == null) {
-                JOptionPane.showMessageDialog(this, "Unable to start fight: mainFrame not available.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            if (this.player == null) {
-                JOptionPane.showMessageDialog(this, "Player not initialized. Please login first.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
+        // After dialog is closed, switch to the dedicated fight panel (FightLevel1)
+        if (this.mainFrame != null) {
             // create first-stage monster (Keroco) for fight
-            Monster fightMonster = new Monster("Troller", 50, 6, 2);
-            ui.fight.FightLevel3 fightPanel = new ui.fight.FightLevel3(this.mainFrame, this.player, fightMonster);
+            Monster fightMonster = new Monster("Goblin", 30, 6,3);
+            ui.fight.FightLevel1 fightPanel = new ui.fight.FightLevel1(this.mainFrame, this.player, fightMonster);
             this.mainFrame.showPanel(fightPanel);
-        } catch (Exception ex) {
-            // Show error so user can see what went wrong instead of silent failure
-            JOptionPane.showMessageDialog(this, "Gagal memulai pertarungan: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
+        } else {
+            // This should not happen in normal flow; inform and abort
+            JOptionPane.showMessageDialog(this, "Unable to start fight: mainFrame not available.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
     }//GEN-LAST:event_btnFighttActionPerformed
+
+    private void btnInventoryMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventoryMouseEntered
+        // TODO add your handling code here:
+        btnInventory.setBorderPainted(true);
+    }//GEN-LAST:event_btnInventoryMouseEntered
+
+    private void btnInventoryMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventoryMouseExited
+        // TODO add your handling code here:
+        btnInventory.setBorderPainted(false);
+    }//GEN-LAST:event_btnInventoryMouseExited
+
+    private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
+        Player p = (mainFrame != null) ? mainFrame.getPlayer() : null;
+        if (p == null) {
+            JOptionPane.showMessageDialog(this, "Player belum diset. Silakan login terlebih dahulu.", "Inventory", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        // Open the Inventory UI (InventoryPanel removed; logic moved to Inventory)
+        if (mainFrame != null) {
+            mainFrame.showPanel(new Inventory(mainFrame));
+        }
+    }//GEN-LAST:event_btnInventoryActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFightt;
+    private javax.swing.JButton btnInventory;
     private javax.swing.JButton btnback;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

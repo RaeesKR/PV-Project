@@ -6,14 +6,21 @@ package main;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import ui.menu.*;
 import model.Player;
+
 
 public class mainFrame extends javax.swing.JFrame {
 
     private JPanel currentPanel;
     private Player player;
     private javax.swing.JPanel mainPanel;
+    public static Clip clip;
     
     public mainFrame() {
         setTitle("Game Project - JFrame Form");
@@ -54,9 +61,39 @@ public class mainFrame extends javax.swing.JFrame {
         return player;
     }
     
-    public void playMusic() {
+    // Baris 62: Parameter menggunakan 'p' kecil
+    public static void playMusic(String filepath) { 
+        try {
+            // Baris 64: Ubah menjadi 'p' kecil juga agar sama
+            
+            File file = new File(filepath); 
+
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
         
+        // Atur nilai desibel (f di belakang angka berarti tipe data float)
+        // 0.0f  = Volume normal (bawaan file)
+        // -10.0f = Suara lebih kecil
+        // -20.0f = Suara jauh lebih kecil
+        // -80.0f = Mute (senyap total)
+        volume.setValue(-40.0f); 
+            clip.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
     }
+    
+    public static void stopMusic() {
+    // Periksa apakah clip ada dan sedang berjalan
+    if (clip != null && clip.isRunning()) {
+        clip.stop();          // Menghentikan suara
+        clip.setFramePosition(0); // Mengembalikan durasi ke awal (opsional)
+        clip.close();         // Membebaskan memori RAM
+    }
+}
+            
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -112,7 +149,8 @@ public class mainFrame extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-
+        String musicIdle = "C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\MUSIC IDLE.wav";
+         playMusic(musicIdle);
         /* Create and display the form */
         SwingUtilities.invokeLater(() -> new mainFrame());
         java.awt.EventQueue.invokeLater(new Runnable() {

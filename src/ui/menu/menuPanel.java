@@ -42,7 +42,6 @@ public class menuPanel extends javax.swing.JPanel {
         btnCredit = new javax.swing.JButton();
         btnNew = new javax.swing.JButton();
         btnOption = new javax.swing.JButton();
-        btnInventory = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -113,32 +112,6 @@ public class menuPanel extends javax.swing.JPanel {
         });
         add(btnOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 381, 60, 15));
 
-        btnInventory.setBackground(new java.awt.Color(0,0,0,0));
-        btnInventory.setBorder(javax.swing.BorderFactory.createMatteBorder(
-            0, 1, 0, 1,
-            new java.awt.Color(230,230,230)
-        ));
-        btnInventory.setBorderPainted(false);
-        btnInventory.setContentAreaFilled(false);
-        btnInventory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnInventory.setMaximumSize(new java.awt.Dimension(72, 10));
-        btnInventory.setMinimumSize(new java.awt.Dimension(72, 10));
-        btnInventory.setPreferredSize(new java.awt.Dimension(72, 10));
-        btnInventory.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnInventoryMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnInventoryMouseExited(evt);
-            }
-        });
-        btnInventory.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInventoryActionPerformed(evt);
-            }
-        });
-        add(btnInventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 410, 80, 15));
-
         btnExit.setFont(new java.awt.Font("Mistral", 1, 36)); // NOI18N
         btnExit.setBorder(javax.swing.BorderFactory.createMatteBorder(
             0, 1, 0, 1,
@@ -160,9 +133,9 @@ public class menuPanel extends javax.swing.JPanel {
                 btnExitActionPerformed(evt);
             }
         });
-        add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 438, 40, 15));
+        add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 413, 40, 15));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/background/UI.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/background/UI MENUnew.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -174,18 +147,6 @@ public class menuPanel extends javax.swing.JPanel {
     private void btnOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOptionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnOptionActionPerformed
-
-    private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
-        Player p = (mainFrame != null) ? mainFrame.getPlayer() : null;
-        if (p == null) {
-            JOptionPane.showMessageDialog(this, "Player belum diset. Silakan login terlebih dahulu.", "Inventory", JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-        // Open the Inventory UI (InventoryPanel removed; logic moved to Inventory)
-        if (mainFrame != null) {
-            mainFrame.showPanel(new Inventory(mainFrame));
-        }
-    }//GEN-LAST:event_btnInventoryActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
@@ -202,11 +163,6 @@ public class menuPanel extends javax.swing.JPanel {
         btnOption.setBorderPainted(true);
     }//GEN-LAST:event_btnOptionMouseEntered
 
-    private void btnInventoryMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventoryMouseEntered
-        // TODO add your handling code here:
-        btnInventory.setBorderPainted(true);
-    }//GEN-LAST:event_btnInventoryMouseEntered
-
     private void btnExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseEntered
         // TODO add your handling code here:
         btnExit.setBorderPainted(true);
@@ -221,11 +177,6 @@ public class menuPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         btnOption.setBorderPainted(false);
     }//GEN-LAST:event_btnOptionMouseExited
-
-    private void btnInventoryMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventoryMouseExited
-        // TODO add your handling code here:
-        btnInventory.setBorderPainted(false);
-    }//GEN-LAST:event_btnInventoryMouseExited
 
     private void btnExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseExited
         // TODO add your handling code here:
@@ -249,7 +200,6 @@ public class menuPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCredit;
     private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnInventory;
     private javax.swing.JButton btnNew;
     private javax.swing.JButton btnOption;
     private javax.swing.JLabel jLabel2;

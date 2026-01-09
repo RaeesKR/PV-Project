@@ -44,15 +44,30 @@ public class FightLevel6 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        PlayerHP = new javax.swing.JLabel();
+        PlayerArmor = new javax.swing.JLabel();
+        PlayerHP1 = new javax.swing.JLabel();
         btnAttck = new javax.swing.JButton();
         btnDeff = new javax.swing.JButton();
-        PlayerHP = new javax.swing.JLabel();
-        PlayerHP1 = new javax.swing.JLabel();
-        PlayerArmor = new javax.swing.JLabel();
         bgKroco = new javax.swing.JLabel();
         bgBos = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        PlayerHP.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        PlayerHP.setForeground(new java.awt.Color(255, 255, 255));
+        PlayerHP.setText("HP Kamu : ");
+        add(PlayerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, -1));
+
+        PlayerArmor.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        PlayerArmor.setForeground(new java.awt.Color(255, 255, 255));
+        PlayerArmor.setText("Armor : ");
+        add(PlayerArmor, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
+
+        PlayerHP1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        PlayerHP1.setForeground(new java.awt.Color(255, 255, 255));
+        PlayerHP1.setText("Monster HP :");
+        add(PlayerHP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, -1, -1));
 
         btnAttck.setBorder(javax.swing.BorderFactory.createTitledBorder("ATTACK"));
         btnAttck.setBorderPainted(false);
@@ -76,21 +91,6 @@ public class FightLevel6 extends javax.swing.JPanel {
             }
         });
         add(btnDeff, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 450, 80, 80));
-
-        PlayerHP.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
-        PlayerHP.setForeground(new java.awt.Color(0, 255, 51));
-        PlayerHP.setText("HP Kamu : ");
-        add(PlayerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 22, -1, -1));
-
-        PlayerHP1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
-        PlayerHP1.setForeground(new java.awt.Color(0, 255, 51));
-        PlayerHP1.setText("Monster HP :");
-        add(PlayerHP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(606, 22, -1, -1));
-
-        PlayerArmor.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
-        PlayerArmor.setForeground(new java.awt.Color(0, 255, 51));
-        PlayerArmor.setText("Armor : ");
-        add(PlayerArmor, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 44, -1, -1));
 
         bgKroco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/fightbg/LEVEL 6 MINI BOSS.png"))); // NOI18N
         add(bgKroco, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -237,6 +237,10 @@ public class FightLevel6 extends javax.swing.JPanel {
             else {
                 // player lost
                 player.setMaxHp(100);
+                // reapply armor bonus if player has armor equipped
+                if (player.getEquippedArmor() != null) {
+                    player.addMaxHp(player.getEquippedArmor().getDefense());
+                }
                 player.restoreFullHp();
                 updateHpLabels();
                 JOptionPane.showMessageDialog(this, "Kamu kalah. HP direset menjadi 100.", "Kalah", JOptionPane.INFORMATION_MESSAGE);
