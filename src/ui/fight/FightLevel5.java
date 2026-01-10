@@ -4,6 +4,8 @@
  */
 package ui.fight;
 
+import controllers.InventoryController;
+import controllers.PlayerControlller;
 import main.mainFrame;
 import javax.swing.*;
 import java.awt.*;
@@ -21,6 +23,7 @@ public class FightLevel5 extends javax.swing.JPanel {
     private boolean finished = false;
     private Random rand = new Random();
     private int stage = 1; // 1 = Keroco, 2 = Boss
+    private InventoryController inventoryController = new InventoryController();
 
     /**
      * Creates new form FightLevel1
@@ -201,16 +204,30 @@ public class FightLevel5 extends javax.swing.JPanel {
                             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
 
                     if (choice >= 0 && choice < drops.size()) {
-                        Object chosen = drops.get(choice);
-                        player.addItem(chosen);
-                        if (chosen instanceof model.Weapon) {
-                            model.Weapon w = (model.Weapon) chosen;
-                            JOptionPane.showMessageDialog(this, "Mendapatkan " + w.getName() + "! Masuk inventory.");
-                        } else if (chosen instanceof model.Armor) {
-                            model.Armor a = (model.Armor) chosen;
-                            JOptionPane.showMessageDialog(this, "Mendapatkan " + a.getName() + "! Masuk inventory.");
+                       Object chosen = drops.get(choice);
+
+                        // 1. Simpan ke database
+                        boolean saved = inventoryController.addItemToInventory(player, chosen);
+
+                        if (saved) {
+                            // 2. Masukkan ke Player object
+                            player.addItem(chosen);
+
+                            // 3. Notifikasi
+                            if (chosen instanceof model.Weapon) {
+                                model.Weapon w = (model.Weapon) chosen;
+                                JOptionPane.showMessageDialog(this,
+                                    "Mendapatkan " + w.getName() + "! Masuk inventory.");
+                            } else if (chosen instanceof model.Armor) {
+                                model.Armor a = (model.Armor) chosen;
+                                JOptionPane.showMessageDialog(this,
+                                    "Mendapatkan " + a.getName() + "! Masuk inventory.");
+                            }
                         } else {
-                            JOptionPane.showMessageDialog(this, "Mendapatkan item! Masuk inventory.");
+                            JOptionPane.showMessageDialog(this,
+                                "Gagal menyimpan item ke database!",
+                                "Error",
+                                JOptionPane.ERROR_MESSAGE);
                         }
                         updateHpLabels();
                     }
@@ -225,8 +242,13 @@ public class FightLevel5 extends javax.swing.JPanel {
                     bgKroco.setVisible(false);
                     bgBos.setVisible(true);
                 } else {
+                    if (player != null){
+                            player.unlockLevel(6);
+                            PlayerControlller pc = new PlayerControlller();
+                            pc.UpLevelPlayer(player.getId(), 6);
+                        }
                     if (mainFrame != null) {
-                        if (player != null) player.unlockLevel(6);
+                        
                         JOptionPane.showMessageDialog(this, "Selamat! Level 6 terbuka.");
                         mainFrame.showPanel(new ui.map.mapPanel(mainFrame));
                     }
