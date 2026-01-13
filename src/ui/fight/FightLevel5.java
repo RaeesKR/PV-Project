@@ -110,6 +110,7 @@ public class FightLevel5 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeffActionPerformed
+        mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\Deff.wav");
         if (player == null || monster == null) return;
 
         performPlayerAction(false);
@@ -124,6 +125,7 @@ public class FightLevel5 extends javax.swing.JPanel {
 
     private void btnAttckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttckActionPerformed
         // TODO add your handling code here:
+        mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\Sword.wav");
                 if (player == null || monster == null) return;
 
         performPlayerAction(true);
@@ -257,6 +259,8 @@ public class FightLevel5 extends javax.swing.JPanel {
             }
             else {
                 // player lost
+                mainFrame.stopMusic();
+                mainFrame.playMusic("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\MUSIC IDLE.wav");
                 player.setMaxHp(100);
                 // reapply armor bonus if player has armor equipped
                 if (player.getEquippedArmor() != null) {

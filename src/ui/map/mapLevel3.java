@@ -96,7 +96,8 @@ public class mapLevel3 extends javax.swing.JPanel {
         });
         add(btnFightt, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 3, 800, 600));
 
-        btnback.setText("Back");
+        btnback.setBorderPainted(false);
+        btnback.setContentAreaFilled(false);
         btnback.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnback.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -111,7 +112,7 @@ public class mapLevel3 extends javax.swing.JPanel {
                 btnbackActionPerformed(evt);
             }
         });
-        add(btnback, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        add(btnback, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 40, 20));
 
         Tas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/background/—Pngtree—medieval magic backpack_7111733.png-rmbg.png-rmbg.png"))); // NOI18N
         add(Tas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 150, 130));
@@ -122,7 +123,7 @@ public class mapLevel3 extends javax.swing.JPanel {
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/fightbg/LEVEL 3.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/background/back (3).png"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -130,6 +131,8 @@ public class mapLevel3 extends javax.swing.JPanel {
         // TODO add your handling code here:
         // Ensure we have a player instance
         mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
+        mainFrame.stopMusic();
+        mainFrame.playMusic("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\FIGHT MUSIC.wav");
         if (this.player == null && this.mainFrame != null) {
             this.player = this.mainFrame.getPlayer();
         }
@@ -188,6 +191,21 @@ public class mapLevel3 extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnInventoryActionPerformed
 
+    private void btnFighttMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFighttMouseClicked
+        // TODO add your handling code here:
+        mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
+    }//GEN-LAST:event_btnFighttMouseClicked
+
+    private void btnInventoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventoryMouseClicked
+        // TODO add your handling code here:
+        mainFrame.playMusic("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
+    }//GEN-LAST:event_btnInventoryMouseClicked
+
+    private void btnbackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnbackMouseClicked
+        // TODO add your handling code here:
+        mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
+    }//GEN-LAST:event_btnbackMouseClicked
+
     private void btnbackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnbackMouseEntered
         // TODO add your handling code here:
         mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\HOVER SFX.wav");
@@ -198,21 +216,6 @@ public class mapLevel3 extends javax.swing.JPanel {
         mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
         mainFrame.showPanel(new mapPanel(mainFrame));
     }//GEN-LAST:event_btnbackActionPerformed
-
-    private void btnbackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnbackMouseClicked
-        // TODO add your handling code here:
-        mainFrame.playMusic("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
-    }//GEN-LAST:event_btnbackMouseClicked
-
-    private void btnFighttMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFighttMouseClicked
-        // TODO add your handling code here:
-        mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
-    }//GEN-LAST:event_btnFighttMouseClicked
-
-    private void btnInventoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventoryMouseClicked
-        // TODO add your handling code here:
-        mainFrame.playMusic("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
-    }//GEN-LAST:event_btnInventoryMouseClicked
 
 
 

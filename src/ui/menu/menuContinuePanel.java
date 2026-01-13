@@ -207,7 +207,7 @@ public class menuContinuePanel extends javax.swing.JPanel {
 
     private void btnCreditMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCreditMouseEntered
         // TODO add your handling code here:
-        mainFrame.playMusic("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\HOVER SFX.wav");
+        mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\HOVER SFX.wav");
     }//GEN-LAST:event_btnCreditMouseEntered
 
     private void btnCreditMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCreditMouseExited
@@ -222,22 +222,22 @@ public class menuContinuePanel extends javax.swing.JPanel {
 
     private void btnCreditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCreditMouseClicked
         // TODO add your handling code here:
-        mainFrame.playMusic("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
+        mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
     }//GEN-LAST:event_btnCreditMouseClicked
 
     private void btnContinueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContinueMouseClicked
         // TODO add your handling code here:
-        mainFrame.playMusic("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
+        mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
     }//GEN-LAST:event_btnContinueMouseClicked
 
     private void btnOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOptionMouseClicked
         // TODO add your handling code here:
-        mainFrame.playMusic("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
+        mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
     }//GEN-LAST:event_btnOptionMouseClicked
 
     private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
         // TODO add your handling code here:
-        mainFrame.playMusic("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
+        mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
     }//GEN-LAST:event_btnExitMouseClicked
 
 

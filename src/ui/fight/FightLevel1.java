@@ -12,6 +12,7 @@ import model.Player;
 import model.Monster;
 
 
+
 public class FightLevel1 extends javax.swing.JPanel {
 
     private mainFrame mainFrame;
@@ -142,12 +143,12 @@ public class FightLevel1 extends javax.swing.JPanel {
 
     private void btnAttckMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttckMouseClicked
         // TODO add your handling code here:
-        mainFrame.playMusic("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\Sword.wav");
+        mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\Sword.wav");
     }//GEN-LAST:event_btnAttckMouseClicked
 
     private void btnDeffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeffMouseClicked
         // TODO add your handling code here:
-        mainFrame.playMusic("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
+        mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
     }//GEN-LAST:event_btnDeffMouseClicked
 
 
@@ -215,6 +216,7 @@ public class FightLevel1 extends javax.swing.JPanel {
                 if (stage != 1) {
                     player.restoreFullHp();
                     updateHpLabels();
+                    
                 }
 
                 java.util.List<Object> drops = DropItemAfterDefeatMonster.dropItems(player);
@@ -255,11 +257,15 @@ public class FightLevel1 extends javax.swing.JPanel {
                     player.unlockLevel(2);
                 }
                 if (mainFrame != null) {
+                    mainFrame.stopMusic();
+                    mainFrame.playMusic("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\MUSIC IDLE.wav");
                     JOptionPane.showMessageDialog(this, "Selamat! Level 2 terbuka.");
                     mainFrame.showPanel(new ui.map.mapPanel(mainFrame));
                 }
             }
             else {
+                mainFrame.stopMusic();
+                mainFrame.playMusic("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\MUSIC IDLE.wav");
                 player.setMaxHp(100);
                 // reapply armor bonus if player has armor equipped
                 if (player.getEquippedArmor() != null) {

@@ -20,7 +20,7 @@ public class mainFrame extends javax.swing.JFrame {
     private JPanel currentPanel;
     private Player player;
     private javax.swing.JPanel mainPanel;
-    public static Clip clip;
+    public static Clip musicClip; 
     
     public mainFrame() {
         setTitle("Game Project - JFrame Form");
@@ -63,15 +63,14 @@ public class mainFrame extends javax.swing.JFrame {
     
     // Baris 62: Parameter menggunakan 'p' kecil
     public static void playMusic(String filepath) { 
+        mainFrame.stopMusic();
         try {
-            // Baris 64: Ubah menjadi 'p' kecil juga agar sama
-            
             File file = new File(filepath); 
 
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-            clip = AudioSystem.getClip();
-            clip.open(audioStream);
-            FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            musicClip = AudioSystem.getClip();
+            musicClip.open(audioStream);
+            FloatControl volume = (FloatControl) musicClip.getControl(FloatControl.Type.MASTER_GAIN);
         
         // Atur nilai desibel (f di belakang angka berarti tipe data float)
         // 0.0f  = Volume normal (bawaan file)
@@ -79,22 +78,22 @@ public class mainFrame extends javax.swing.JFrame {
         // -20.0f = Suara jauh lebih kecil
         // -80.0f = Mute (senyap total)
         volume.setValue(-15.0f); 
-            clip.start();
+            musicClip.loop(Clip.LOOP_CONTINUOUSLY);
+            musicClip.start();
         } catch (Exception e) {
             e.printStackTrace();
         } 
     }
     
     public static void playSFX(String filepath) { 
+        
         try {
-            // Baris 64: Ubah menjadi 'p' kecil juga agar sama
-            
             File file = new File(filepath); 
 
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-            clip = AudioSystem.getClip();
-            clip.open(audioStream);
-            FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            Clip sfxClip = AudioSystem.getClip();
+            sfxClip.open(audioStream);
+            FloatControl volume = (FloatControl) sfxClip.getControl(FloatControl.Type.MASTER_GAIN);
         
         // Atur nilai desibel (f di belakang angka berarti tipe data float)
         // 0.0f  = Volume normal (bawaan file)
@@ -102,21 +101,26 @@ public class mainFrame extends javax.swing.JFrame {
         // -20.0f = Suara jauh lebih kecil
         // -80.0f = Mute (senyap total)
         volume.setValue(-0.0f); 
-            clip.start();
+            sfxClip.start();
+            sfxClip.addLineListener(event -> {
+                if (event.getType() == javax.sound.sampled.LineEvent.Type.STOP) {
+                    sfxClip.close();
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         } 
     }
     
-    public static void stopMusic(String filepath) {
-    // Periksa apakah clip ada dan sedang berjalan
-    if (clip != null) {
-        clip.stop();          // Menghentikan suara
-        clip.setFramePosition(0); // Mengembalikan durasi ke awal (opsional)
-        clip.close();         // Membebaskan memori RAM
+    public static void stopMusic() {
+        // Periksa apakah musicClip ada dan sedang berjalan
+        if (musicClip != null) {
+            musicClip.stop();          // Menghentikan suara
+            musicClip.setFramePosition(0); // Mengembalikan durasi ke awal (opsional)
+            musicClip.close();         // Membebaskan memori RAM
+            musicClip = null;
+        }
     }
-    
-}
             
     
     /**

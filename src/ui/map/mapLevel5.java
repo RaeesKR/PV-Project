@@ -46,10 +46,10 @@ public class mapLevel5 extends javax.swing.JPanel {
 
         btnInventory = new javax.swing.JButton();
         btnFightt = new javax.swing.JButton();
-        btnback = new javax.swing.JButton();
         Tas = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        btnback = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -99,7 +99,20 @@ public class mapLevel5 extends javax.swing.JPanel {
         });
         add(btnFightt, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 3, 800, 600));
 
-        btnback.setText("Back");
+        Tas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/background/—Pngtree—medieval magic backpack_7111733.png-rmbg.png-rmbg.png"))); // NOI18N
+        add(Tas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 150, 130));
+
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Klik dimana saja untuk bertarung!");
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/background/back (5).png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        btnback.setBorderPainted(false);
+        btnback.setContentAreaFilled(false);
         btnback.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnback.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -114,25 +127,15 @@ public class mapLevel5 extends javax.swing.JPanel {
                 btnbackActionPerformed(evt);
             }
         });
-        add(btnback, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-        Tas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/background/—Pngtree—medieval magic backpack_7111733.png-rmbg.png-rmbg.png"))); // NOI18N
-        add(Tas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 150, 130));
-
-        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Klik dimana saja untuk bertarung!");
-        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, -1, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/fightbg/LEVEL 5(1).png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        add(btnback, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 40, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFighttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFighttActionPerformed
         // TODO add your handling code here:
         // Ensure we have a player instance
         mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
+        mainFrame.stopMusic();
+        mainFrame.playMusic("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\FIGHT MUSIC.wav");
         if (this.player == null && this.mainFrame != null) {
             this.player = this.mainFrame.getPlayer();
         }
@@ -193,17 +196,6 @@ public class mapLevel5 extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnInventoryActionPerformed
 
-    private void btnbackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnbackMouseEntered
-        // TODO add your handling code here:
-        mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\HOVER SFX.wav");
-    }//GEN-LAST:event_btnbackMouseEntered
-
-    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
-        // TODO add your handling code here:
-        mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
-        mainFrame.showPanel(new mapPanel(mainFrame));
-    }//GEN-LAST:event_btnbackActionPerformed
-
     private void btnInventoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventoryMouseClicked
         // TODO add your handling code here:
         mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
@@ -218,6 +210,17 @@ public class mapLevel5 extends javax.swing.JPanel {
         // TODO add your handling code here:
         mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
     }//GEN-LAST:event_btnbackMouseClicked
+
+    private void btnbackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnbackMouseEntered
+        // TODO add your handling code here:
+        mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\HOVER SFX.wav");
+    }//GEN-LAST:event_btnbackMouseEntered
+
+    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
+        // TODO add your handling code here:
+        mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
+        mainFrame.showPanel(new mapPanel(mainFrame));
+    }//GEN-LAST:event_btnbackActionPerformed
 
 
 
