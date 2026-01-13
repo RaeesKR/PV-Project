@@ -142,6 +142,9 @@ public class mapLevel3 extends javax.swing.JPanel {
             return;
         }
 
+        var imagePath = "/resource/images/iconbutton/Bos3.png";
+        ImageIcon bosIcon = new ImageIcon(getClass().getResource(imagePath));
+        
         // Level-specific dialog content
         String message = "Huh? Siapa kau? apa yang kau inginkan disini?";
         String message2 = "Aku hanya ingin lewat";
@@ -149,11 +152,11 @@ public class mapLevel3 extends javax.swing.JPanel {
         String message4 = "Oke, jika itu maumu";
         String message5 = "One Eye, Serang diaa!!!";
         
-        JOptionPane.showMessageDialog(this, message, "Skeleton",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, message, "Skeleton",JOptionPane.INFORMATION_MESSAGE, bosIcon);
         JOptionPane.showMessageDialog(this, message2, player.getName() ,JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(this, message3, "Skeleton",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, message3, "Skeleton",JOptionPane.INFORMATION_MESSAGE, bosIcon);
         JOptionPane.showMessageDialog(this, message4, player.getName() ,JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(this, message5, "Skeleton",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, message5, "Skeleton",JOptionPane.INFORMATION_MESSAGE, bosIcon);
 
         // After dialog is closed, switch to the dedicated fight panel (FightLevel1)
         if (this.mainFrame != null) {

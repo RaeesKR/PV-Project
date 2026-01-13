@@ -86,6 +86,7 @@ public class registerPage extends javax.swing.JPanel {
 
         btnRegis.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         btnRegis.setText("Register");
+        btnRegis.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegis.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnRegisMouseEntered(evt);

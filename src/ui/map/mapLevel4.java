@@ -143,6 +143,10 @@ public class mapLevel4 extends javax.swing.JPanel {
             return;
         }
 
+        //Notif bos Dialog
+        var imagePath = "/resource/images/iconbutton/Bos4.png";
+        ImageIcon bosIcon = new ImageIcon(getClass().getResource(imagePath));
+        
         // Level-specific dialog content
         String message = "Hai Tampan, apa yang kau inginkan disini? Apa kau mencariku?";
         String message2 = "Jadi kau penguasa kastil ini?";
@@ -151,12 +155,12 @@ public class mapLevel4 extends javax.swing.JPanel {
         String message5 = "Ah, Baru tiba dan langsung ingin bertarung?";
         String message6 = "Apa kau tidak ingin berduaan denganku dahulu? Baiklah Lawan dahulu Bawahanku";
         
-        JOptionPane.showMessageDialog(this, message, "Matriarch Vexra",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, message, "Matriarch Vexra",JOptionPane.INFORMATION_MESSAGE,bosIcon);
         JOptionPane.showMessageDialog(this, message2, player.getName() ,JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(this, message3, "Matriarch Vexra",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, message3, "Matriarch Vexra",JOptionPane.INFORMATION_MESSAGE,bosIcon);
         JOptionPane.showMessageDialog(this, message4, player.getName() ,JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(this, message5, "Matriarch Vexra",JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(this, message6, "Matriarch Vexra",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, message5, "Matriarch Vexra",JOptionPane.INFORMATION_MESSAGE,bosIcon);
+        JOptionPane.showMessageDialog(this, message6, "Matriarch Vexra",JOptionPane.INFORMATION_MESSAGE,bosIcon);
 
         // After dialog is closed, switch to the dedicated fight panel (FightLevel1)
         if (this.mainFrame != null) {

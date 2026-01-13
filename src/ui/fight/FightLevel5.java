@@ -241,11 +241,15 @@ public class FightLevel5 extends javax.swing.JPanel {
                     }
                 }
 
+                //Icon Bos Dialog
+                var imagePath = "/resource/images/iconbutton/Bos5.png";
+                ImageIcon bosIcon = new ImageIcon(getClass().getResource(imagePath));
+                
                 if (stage == 1) {
                     stage = 2;
                     finished = false;
                     monster = new Monster("Valerius the Darkbound", 250, 28, 16);
-                    JOptionPane.showMessageDialog(this, "Gorgonath juga kau kalahkan? Tak akan kubiarkan kau lebih jauh!!!");
+                    JOptionPane.showMessageDialog(this, "Gorgonath juga kau kalahkan? Tak akan kubiarkan kau lebih jauh!!!","Valerius The Darkbound",JOptionPane.INFORMATION_MESSAGE,bosIcon);
                     updateHpLabels();
                     bgKroco.setVisible(false);
                     bgBos.setVisible(true);

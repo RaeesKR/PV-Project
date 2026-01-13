@@ -240,12 +240,16 @@ public class FightLevel4 extends javax.swing.JPanel {
                         updateHpLabels();
                     }
                 }
-
+                
+                //Icon Bos Dialog
+                var imagePath = "/resource/images/iconbutton/Bos4.png";
+                ImageIcon bosIcon = new ImageIcon(getClass().getResource(imagePath));
+                
                 if (stage == 1) {
                     stage = 2;
                     finished = false;
                     monster = new Monster("Matriarch Vexra", 230, 25, 14);
-                    JOptionPane.showMessageDialog(this, "Wah Ternyata kamu kuat juga, aku jatuh hati");
+                    JOptionPane.showMessageDialog(this, "Wah Ternyata kamu kuat juga, aku jatuh hati","Matriarch Vexra",JOptionPane.INFORMATION_MESSAGE,bosIcon);
                     updateHpLabels();
                     bgBos.setVisible(true);
                     bgKroco.setVisible(false);

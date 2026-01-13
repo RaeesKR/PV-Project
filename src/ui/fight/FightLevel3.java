@@ -240,12 +240,16 @@ public class FightLevel3 extends javax.swing.JPanel {
                         updateHpLabels();
                     }
                 }
-
+                
+                //Icon Bos Dialog
+                var imagePath = "/resource/images/iconbutton/Bos3.png";
+                ImageIcon bosIcon = new ImageIcon(getClass().getResource(imagePath));
+                
                 if (stage == 1) {
                     stage = 2;
                     finished = false;
                     monster = new Monster("Skeleton", 200, 25, 12);
-                    JOptionPane.showMessageDialog(this, "Huhh, Boleh Juga");
+                    JOptionPane.showMessageDialog(this, "Huhh, Boleh Juga", "Skeleton", JOptionPane.INFORMATION_MESSAGE,bosIcon);
                     updateHpLabels();
                     bgBos.setVisible(true);
                     bgKroco.setVisible(false);

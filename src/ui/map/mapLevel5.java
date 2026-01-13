@@ -145,6 +145,10 @@ public class mapLevel5 extends javax.swing.JPanel {
             return;
         }
 
+        //Notif bos Dialog
+        var imagePath = "/resource/images/iconbutton/Bos5.png";
+        ImageIcon bosIcon = new ImageIcon(getClass().getResource(imagePath));
+        
         // Level-specific dialog content
         String message = "Kau bisa sampai kesini? Artinya....";
         String message2 = "Ya... Aku sudah mengalahkan Matriarch Vexra";
@@ -152,11 +156,11 @@ public class mapLevel5 extends javax.swing.JPanel {
         String message4 = "Huh, Coba saja kalau bisa";
         String message5 = "BUNUH DIA GORGONATH";
         
-        JOptionPane.showMessageDialog(this, message, "Valerius the Darkbound",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, message, "Valerius the Darkbound",JOptionPane.INFORMATION_MESSAGE,bosIcon);
         JOptionPane.showMessageDialog(this, message2, player.getName() ,JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(this, message3, "Valerius the Darkbound",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, message3, "Valerius the Darkbound",JOptionPane.INFORMATION_MESSAGE,bosIcon);
         JOptionPane.showMessageDialog(this, message4, player.getName() ,JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(this, message5, "Valerius the Darkbound" ,JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, message5, "Valerius the Darkbound" ,JOptionPane.INFORMATION_MESSAGE,bosIcon);
 
 
         // After dialog is closed, switch to the dedicated fight panel (FightLevel1)

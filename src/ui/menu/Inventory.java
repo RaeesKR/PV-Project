@@ -239,7 +239,11 @@ public class Inventory extends javax.swing.JPanel {
         panelRight.setBackground(new java.awt.Color(143, 94, 65));
         panelRight.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        btnEquip.setBackground(new java.awt.Color(153, 91, 52));
+        btnEquip.setForeground(new java.awt.Color(255, 255, 255));
         btnEquip.setText("Equip / Unequip");
+        btnEquip.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnEquip.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEquip.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEquipMouseClicked(evt);
@@ -254,7 +258,11 @@ public class Inventory extends javax.swing.JPanel {
             }
         });
 
+        btnDrop.setBackground(new java.awt.Color(153, 91, 52));
+        btnDrop.setForeground(new java.awt.Color(255, 255, 255));
         btnDrop.setText("Delete");
+        btnDrop.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDrop.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDrop.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDropMouseClicked(evt);
@@ -269,7 +277,11 @@ public class Inventory extends javax.swing.JPanel {
             }
         });
 
+        btnBack.setBackground(new java.awt.Color(153, 91, 52));
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("Back");
+        btnBack.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnBackMouseClicked(evt);
@@ -293,7 +305,7 @@ public class Inventory extends javax.swing.JPanel {
             panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRightLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(btnEquip)
+                .addComponent(btnEquip, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnDrop, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)

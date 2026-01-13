@@ -248,12 +248,16 @@ public class FightLevel2 extends javax.swing.JPanel {
                         updateHpLabels();
                     }
                 }
-
+                
+                //Icon Bos Dialog
+                var imagePath = "/resource/images/iconbutton/Bos2.png";
+                ImageIcon bosIcon = new ImageIcon(getClass().getResource(imagePath));
+                
                 if (stage == 1) {
                     stage = 2;
                     finished = false;
                     monster = new Monster("King Orcus", 140, 23, 10);
-                    JOptionPane.showMessageDialog(this, "AGHHH BERANINYA KAUUU", "King Orcus",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "AGHHH BERANINYA KAUUU", "King Orcus",JOptionPane.INFORMATION_MESSAGE,bosIcon);
                     updateHpLabels();
                     bgBos.setVisible(true);
                     bgKroco.setVisible(false);

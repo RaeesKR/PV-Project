@@ -240,12 +240,16 @@ public class FightLevel6 extends javax.swing.JPanel {
                         updateHpLabels();
                     }
                 }
-
+                    
+                //Icon Bos Dialog
+                var imagePath = "/resource/images/iconbutton/Bos6.png";
+                ImageIcon bosIcon = new ImageIcon(getClass().getResource(imagePath));
+                
                 if (stage == 1) {
                     stage = 2;
                     finished = false;
                     monster = new Monster("Prince Aurelius", 300, 30, 20);
-                    JOptionPane.showMessageDialog(this, "Kuat juga kau");
+                    JOptionPane.showMessageDialog(this, "Kuat juga kau","Prince Aurelius",JOptionPane.INFORMATION_MESSAGE,bosIcon);
                     updateHpLabels();
                     bgKroco.setVisible(false);
                     bgBos.setVisible(true);

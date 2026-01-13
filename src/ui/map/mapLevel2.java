@@ -143,15 +143,19 @@ public class mapLevel2 extends javax.swing.JPanel {
             return;
         }
 
+        //Notif Icon Dialog
+        var imagePath = "/resource/images/iconbutton/Bos2.png";
+        ImageIcon bosIcon = new ImageIcon(getClass().getResource(imagePath));
+        
         // Level-specific dialog content
         String message = "Owh jadi kau yang mengalahkan Wolf of Sumatra? Dasar, mari bertarung";
         String message2 = "Huh hanya kau? mudah";
         String message3 = "Tidak semudah itu, kau harus melawan peliharaanku dahulu. HAHAHAHA";
         String message4 = "Huh, baiklah";
         
-        JOptionPane.showMessageDialog(this, message, "King Orcus",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, message, "King Orcus",JOptionPane.INFORMATION_MESSAGE, bosIcon);
         JOptionPane.showMessageDialog(this, message2, player.getName() ,JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(this, message3, "King Orcus",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, message3, "King Orcus",JOptionPane.INFORMATION_MESSAGE,bosIcon);
         JOptionPane.showMessageDialog(this, message4, player.getName() ,JOptionPane.INFORMATION_MESSAGE);
 
         // After dialog is closed, switch to the dedicated fight panel (FightLevel1)

@@ -13,6 +13,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import static main.mainFrame.playMusic;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import model.Player;
 import model.Monster;
 import ui.menu.*;
@@ -149,11 +151,16 @@ public class mapLevel1 extends javax.swing.JPanel {
             return;
         }
 
+        //Icon Bos Dialog
+        var imagePath = "/resource/images/iconbutton/Bos1.png";
+        ImageIcon bosIcon = new ImageIcon(getClass().getResource(imagePath));
+
+        
         // Level-specific dialog content
         String message = "Hei Kau, jika ingin lewat, Kalahkan aku dulu!";
         String message2 = "Oke, mari bertarung";
         
-        JOptionPane.showMessageDialog(this, message, "Wolf of Sumatra",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, message, "Wolf of Sumatra",JOptionPane.INFORMATION_MESSAGE, bosIcon); 
         JOptionPane.showMessageDialog(this, message2, player.getName() ,JOptionPane.INFORMATION_MESSAGE);
 
         // After dialog is closed, switch to the dedicated fight panel (FightLevel1)

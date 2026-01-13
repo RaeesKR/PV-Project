@@ -159,6 +159,7 @@ public class menuPanel extends javax.swing.JPanel {
 
     private void btnOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOptionActionPerformed
         // TODO add your handling code here:
+        mainFrame.showPanel(new settingPanel(mainFrame));
         mainFrame.playSFX("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
     }//GEN-LAST:event_btnOptionActionPerformed
 
