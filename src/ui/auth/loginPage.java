@@ -9,6 +9,7 @@ import main.mainFrame;
 import ui.menu.*;
 import ui.auth.*;
 import model.Player;
+import controllers.PlayerControlller;
 
 /**
  *
@@ -145,7 +146,17 @@ public class loginPage extends javax.swing.JPanel {
         
         if (session != null ) {
             // initialize player with sensible defaults (hp and attack)
-            Player player = new Player(session.getUserId(), session.getUserName(), 100, 10);
+            
+            PlayerControlller pc = new PlayerControlller();
+            Player player = pc.getPlayerByUserId(session.getUserId());
+            
+            if (player == null) {
+              player = pc.createNewPlayer(
+                      session.getUserId(),
+                      session.getUserName());
+              
+            }
+            
             mainFrame.setPlayer(player);
             mainFrame.showPanel(new menuPanel(mainFrame));
             
@@ -155,7 +166,7 @@ public class loginPage extends javax.swing.JPanel {
         }
     
     }//GEN-LAST:event_btnLoginActionPerformed
-
+    
     
     private void btnRegisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisActionPerformed
         // TODO add your handling code here:

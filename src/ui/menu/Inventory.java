@@ -8,6 +8,7 @@ package ui.menu;
  *
  * @author Dhenis
  */
+import controllers.InventoryController;
 import main.mainFrame;
 import model.Player;
 import model.Weapon;
@@ -38,6 +39,10 @@ public class Inventory extends javax.swing.JPanel {
 
     initComponents();
     initLogic();
+     if (player != null) {
+         InventoryController ic = new InventoryController();
+        ic.loadInventory(player); // AMBIL DARI DB → PLAYER
+    }
     refreshAll();
     }
     
@@ -140,43 +145,44 @@ public class Inventory extends javax.swing.JPanel {
     }
 
     private void onEquip() {
-        Object sel = listItems.getSelectedValue();
-        if (player == null) return;
-        if (sel == null) {
-            JOptionPane.showMessageDialog(this, "Pilih item terlebih dahulu.");
-            return;
-        }
-        if (sel instanceof Weapon || sel instanceof Armor) {
-            boolean wasEquipped = (sel instanceof Weapon && sel.equals(player.getEquippedWeapon())) || (sel instanceof Armor && sel.equals(player.getEquippedArmor()));
-            if (wasEquipped) {
-                player.unequipItem(sel);
-                JOptionPane.showMessageDialog(this, "Item dilepas dari equip.");
-            } else {
-                player.equipItem(sel);
-                JOptionPane.showMessageDialog(this, "Item di-equip.");
-            }
-            refreshAll();
-        } else {
-            JOptionPane.showMessageDialog(this, "Item ini tidak dapat di-equip.");
-        }
+            Object sel = listItems.getSelectedValue();
+         if (player == null || sel == null) return;
+
+         InventoryController ic = new InventoryController();
+
+         boolean wasEquipped =
+             (sel instanceof Weapon && sel.equals(player.getEquippedWeapon())) ||
+             (sel instanceof Armor && sel.equals(player.getEquippedArmor()));
+
+         if (wasEquipped) {
+             player.unequipItem(sel); // optional (DB tidak simpan unequip spesifik)
+             JOptionPane.showMessageDialog(this, "Item dilepas.");
+         } else {
+             ic.equipItem(player, sel); // ⬅ WAJIB
+             JOptionPane.showMessageDialog(this, "Item di-equip.");
+         }
+
+         refreshAll();
     }
 
     private void onDrop() {
-        Object sel = listItems.getSelectedValue();
-        if (player == null) return;
-        if (sel == null) {
-            JOptionPane.showMessageDialog(this, "Pilih item terlebih dahulu.");
-            return;
-        }
-        int confirm = JOptionPane.showConfirmDialog(this, "Yakin ingin membuang item ini?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+            Object sel = listItems.getSelectedValue();
+        if (player == null || sel == null) return;
+
+        int confirm = JOptionPane.showConfirmDialog(
+            this,
+            "Yakin ingin membuang item ini?",
+            "Konfirmasi",
+            JOptionPane.YES_NO_OPTION
+        );
+
         if (confirm != JOptionPane.YES_OPTION) return;
-        boolean removed = player.removeItem(sel);
-        if (removed) {
-            JOptionPane.showMessageDialog(this, "Item dibuang dari inventory.");
-            refreshAll();
-        } else {
-            JOptionPane.showMessageDialog(this, "Gagal membuang item.");
-        }
+
+        InventoryController ic = new InventoryController();
+        ic.deleteItem(player, sel); // ⬅ DB + MEMORY
+
+        JOptionPane.showMessageDialog(this, "Item dibuang.");
+        refreshAll();
     }
 
     private void onBack() {

@@ -142,6 +142,16 @@ public class mapLevel2 extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Player not initialized. Please login first.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+        if (player.getHighestUnlockedLevel() < 2) {
+             JOptionPane.showMessageDialog(
+               this,
+               "Level 2 masih terkunci!\nSelesaikan Level 1 terlebih dahulu.",
+               "Level Terkunci",
+               JOptionPane.WARNING_MESSAGE
+           );
+           return;
+        }
 
         //Notif Icon Dialog
         var imagePath = "/resource/images/iconbutton/Bos2.png";

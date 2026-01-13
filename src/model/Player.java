@@ -32,6 +32,14 @@ public class Player {
         this.attack = attack;
         this.maxHp = hp;
     }
+    public int getId() {
+    return id;
+}
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
     public String getName() {
         return name;
@@ -199,4 +207,18 @@ public class Player {
         }
         return sb.toString();
     }
+    
+    public void clearInventory() {
+    // unequip dulu biar stat bersih
+    if (equippedWeapon != null) {
+        addAttack(-equippedWeapon.getAttack());
+        equippedWeapon = null;
+    }
+    if (equippedArmor != null) {
+        addMaxHp(-equippedArmor.getDefense());
+        equippedArmor = null;
+    }
+    inventory.clear();
+}
+
 }

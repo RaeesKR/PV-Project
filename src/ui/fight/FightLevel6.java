@@ -4,6 +4,7 @@
  */
 package ui.fight;
 
+import controllers.InventoryController;
 import main.mainFrame;
 import javax.swing.*;
 import java.awt.*;
@@ -21,6 +22,7 @@ public class FightLevel6 extends javax.swing.JPanel {
     private boolean finished = false;
     private Random rand = new Random();
     private int stage = 1; // 1 = Keroco, 2 = Boss
+    private InventoryController inventoryController = new InventoryController();
 
     /**
      * Creates new form FightLevel1
@@ -227,15 +229,29 @@ public class FightLevel6 extends javax.swing.JPanel {
 
                     if (choice >= 0 && choice < drops.size()) {
                         Object chosen = drops.get(choice);
-                        player.addItem(chosen);
-                        if (chosen instanceof model.Weapon) {
-                            model.Weapon w = (model.Weapon) chosen;
-                            JOptionPane.showMessageDialog(this, "Mendapatkan " + w.getName() + "! Masuk inventory.");
-                        } else if (chosen instanceof model.Armor) {
-                            model.Armor a = (model.Armor) chosen;
-                            JOptionPane.showMessageDialog(this, "Mendapatkan " + a.getName() + "! Masuk inventory.");
+
+                        // 1. Simpan ke database
+                        boolean saved = inventoryController.addItemToInventory(player, chosen);
+
+                        if (saved) {
+                            // 2. Masukkan ke Player object
+                            player.addItem(chosen);
+
+                            // 3. Notifikasi
+                            if (chosen instanceof model.Weapon) {
+                                model.Weapon w = (model.Weapon) chosen;
+                                JOptionPane.showMessageDialog(this,
+                                    "Mendapatkan " + w.getName() + "! Masuk inventory.");
+                            } else if (chosen instanceof model.Armor) {
+                                model.Armor a = (model.Armor) chosen;
+                                JOptionPane.showMessageDialog(this,
+                                    "Mendapatkan " + a.getName() + "! Masuk inventory.");
+                            }
                         } else {
-                            JOptionPane.showMessageDialog(this, "Mendapatkan item! Masuk inventory.");
+                            JOptionPane.showMessageDialog(this,
+                                "Gagal menyimpan item ke database!",
+                                "Error",
+                                JOptionPane.ERROR_MESSAGE);
                         }
                         updateHpLabels();
                     }

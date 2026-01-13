@@ -28,7 +28,7 @@ public class mainFrame extends javax.swing.JFrame {
         mainPanel = jPanel1;
         showPanel(new startPanel(this));
 //        testkoneksi();
-
+    
     }
     
 //    koneksi database
