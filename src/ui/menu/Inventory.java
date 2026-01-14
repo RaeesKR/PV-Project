@@ -250,6 +250,7 @@ public class Inventory extends javax.swing.JPanel {
         btnEquip.setText("Equip / Unequip");
         btnEquip.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnEquip.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEquip.setPreferredSize(new java.awt.Dimension(90, 30));
         btnEquip.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEquipMouseClicked(evt);
@@ -269,6 +270,9 @@ public class Inventory extends javax.swing.JPanel {
         btnDrop.setText("Delete");
         btnDrop.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnDrop.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDrop.setMaximumSize(new java.awt.Dimension(90, 30));
+        btnDrop.setMinimumSize(new java.awt.Dimension(90, 30));
+        btnDrop.setPreferredSize(new java.awt.Dimension(90, 30));
         btnDrop.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDropMouseClicked(evt);
@@ -288,6 +292,9 @@ public class Inventory extends javax.swing.JPanel {
         btnBack.setText("Back");
         btnBack.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBack.setMaximumSize(new java.awt.Dimension(90, 30));
+        btnBack.setMinimumSize(new java.awt.Dimension(90, 30));
+        btnBack.setPreferredSize(new java.awt.Dimension(90, 30));
         btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnBackMouseClicked(evt);
@@ -330,7 +337,7 @@ public class Inventory extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelRightLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(btnBack)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelRightLayout.createSequentialGroup()
                 .addContainerGap()
@@ -339,8 +346,8 @@ public class Inventory extends javax.swing.JPanel {
             .addGroup(panelRightLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDrop)
-                    .addComponent(btnEquip))
+                    .addComponent(btnDrop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEquip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 

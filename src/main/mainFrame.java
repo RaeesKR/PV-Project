@@ -85,8 +85,7 @@ public class mainFrame extends javax.swing.JFrame {
         } 
     }
     
-    public static void playSFX(String filepath) { 
-        
+    public static void playSFX(String filepath) {   
         try {
             File file = new File(filepath); 
 

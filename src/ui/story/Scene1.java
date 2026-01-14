@@ -30,13 +30,16 @@ public class Scene1 extends javax.swing.JPanel {
 
         klik = new javax.swing.JLabel();
         next = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         bg = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        klik.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        klik.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        klik.setForeground(new java.awt.Color(187, 187, 187));
         klik.setText("Klik di mana saja untuk lanjut");
-        add(klik, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 520, 180, 20));
+        add(klik, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 530, 260, 20));
 
         next.setToolTipText("");
         next.setBorderPainted(false);
@@ -47,6 +50,22 @@ public class Scene1 extends javax.swing.JPanel {
             }
         });
         add(next, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
+
+        jScrollPane1.setEnabled(false);
+        jScrollPane1.setFocusable(false);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(140, 90));
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(205, 135, 56));
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("SimSun-ExtG", 0, 11)); // NOI18N
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Sawnesit berdiri di lekukan lembah seperti kenangan yang tak pernah berniat \npergi.Dinding batu dan atap tua menyimpan jejak tangan para pendahulu, \nsementara sungai yang mengalir tenang memantulkan cahaya lampu malam dan \ndoa-doa sederhana.Di bawah naungan kerajaan, desa itu hidup tanpa ambisi \nbesar cukup dengan hari esok yang masih bisa diharapkan. Di sana, waktu \nberjalan perlahan.Langkah-langkah kecil tumbuh menjadi kebiasaan. \nWajah-wajah asing berubah menjadi keluarga. Bagi dirinya, Sawnesit adalah \nawal dari segala hal.Tempat napas pertama kali terasa aman, tempat dunia \ndikenali bukansebagai ancaman, melainkan sebagai rumah.");
+        jTextArea1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextArea1.setPreferredSize(new java.awt.Dimension(459, 112));
+        jScrollPane1.setViewportView(jTextArea1);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 415, 465, 118));
 
         bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/dialog/SCENE 1 DIALOG.png"))); // NOI18N
         add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -4, -1, 610));
@@ -60,6 +79,8 @@ public class Scene1 extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel klik;
     private javax.swing.JButton next;
     // End of variables declaration//GEN-END:variables

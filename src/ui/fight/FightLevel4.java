@@ -143,12 +143,10 @@ public class FightLevel4 extends javax.swing.JPanel {
 
     private void btnAttckMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttckMouseClicked
         // TODO add your handling code here:
-        mainFrame.playMusic("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
     }//GEN-LAST:event_btnAttckMouseClicked
 
     private void btnDeffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeffMouseClicked
         // TODO add your handling code here:
-        mainFrame.playMusic("C:\\Users\\Dhenis\\Documents\\NetBeansProjects\\Kyojin_Gemu\\src\\resource\\sounds\\CLICK SFX.wav");
     }//GEN-LAST:event_btnDeffMouseClicked
 
 

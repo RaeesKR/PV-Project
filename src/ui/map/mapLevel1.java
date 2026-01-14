@@ -49,16 +49,14 @@ public class mapLevel1 extends javax.swing.JPanel {
         Tas = new javax.swing.JLabel();
         btnback = new javax.swing.JButton();
         btnFightt = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnInventory.setBackground(new java.awt.Color(0,0,0,0));
-        btnInventory.setBorder(javax.swing.BorderFactory.createMatteBorder(
-            0, 1, 0, 1,
-            new java.awt.Color(230,230,230)
-        ));
+        btnInventory.setBorder(null);
         btnInventory.setBorderPainted(false);
         btnInventory.setContentAreaFilled(false);
         btnInventory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -81,7 +79,7 @@ public class mapLevel1 extends javax.swing.JPanel {
                 btnInventoryActionPerformed(evt);
             }
         });
-        add(btnInventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 140, 130));
+        add(btnInventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 130, 110));
 
         Tas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/background/—Pngtree—medieval magic backpack_7111733.png-rmbg.png-rmbg.png"))); // NOI18N
         add(Tas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 150, 130));
@@ -120,8 +118,13 @@ public class mapLevel1 extends javax.swing.JPanel {
         });
         add(btnFightt, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 3, 800, 600));
 
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(187, 187, 187));
+        jLabel3.setText("INVENTORY");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, -1, -1));
+
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(187, 187, 187));
         jLabel2.setText("Klik dimana saja untuk bertarung!");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, -1, -1));
@@ -152,8 +155,10 @@ public class mapLevel1 extends javax.swing.JPanel {
         }
 
         //Icon Bos Dialog
-        var imagePath = "/resource/images/iconbutton/Bos1.png";
-        ImageIcon bosIcon = new ImageIcon(getClass().getResource(imagePath));
+        var imageBos = "/resource/images/iconbutton/Bos1.png";
+        var imageMc = "/resource/images/iconbutton/mc.png";
+        ImageIcon bosIcon = new ImageIcon(getClass().getResource(imageBos));
+        ImageIcon mcIcon = new ImageIcon(getClass().getResource(imageMc));
 
         
         // Level-specific dialog content
@@ -161,7 +166,7 @@ public class mapLevel1 extends javax.swing.JPanel {
         String message2 = "Oke, mari bertarung";
         
         JOptionPane.showMessageDialog(this, message, "Wolf of Sumatra",JOptionPane.INFORMATION_MESSAGE, bosIcon); 
-        JOptionPane.showMessageDialog(this, message2, player.getName() ,JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, message2, player.getName() ,JOptionPane.INFORMATION_MESSAGE,mcIcon);
 
         // After dialog is closed, switch to the dedicated fight panel (FightLevel1)
         if (this.mainFrame != null) {
@@ -227,5 +232,6 @@ public class mapLevel1 extends javax.swing.JPanel {
     private javax.swing.JButton btnback;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

@@ -29,15 +29,37 @@ public class Scene2 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        klik = new javax.swing.JLabel();
-        next = new javax.swing.JButton();
+        klik1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+        next = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        klik.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        klik.setText("Klik di mana saja untuk lanjut");
-        add(klik, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 520, 180, 20));
+        klik1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        klik1.setForeground(new java.awt.Color(187, 187, 187));
+        klik1.setText("Klik di mana saja untuk lanjut");
+        add(klik1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 530, 260, 20));
+
+        jScrollPane1.setEnabled(false);
+        jScrollPane1.setFocusable(false);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(140, 90));
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(205, 135, 56));
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("SimSun-ExtG", 0, 11)); // NOI18N
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Langit adalah yang pertama mengkhianati kedamaian. Awan hitam merapat rendah\nmenekan udara hingga terasa berat. Angin membawa bisikan dingin yang tidak \nberasal dari alam. Ketika petir menyambar, ia tidak membawa cahaya \nmelainkan pertanda. Dari kegelapan, barisan datang. Logam beradu. Tanah \nbergetar. Di tengah arus kehancuran itu, berdiri kehendak tunggal yang \nmenggerakkan semuanya, sosok yang kehadirannya mematahkan harapan bahkan \nsebelum pedang diayunkan. Pasukan raja iblis menyapu desa tanpa ragu. Api \nmenggantikan lampu malam. Jeritan menggantikan doa. Sawnesit tidak diperangi\nIa dilenyapkan.");
+        jTextArea1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextArea1.setPreferredSize(new java.awt.Dimension(459, 112));
+        jScrollPane1.setViewportView(jTextArea1);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 415, 465, 118));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/dialog/SCENE 2 DIALOG.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         next.setToolTipText("");
         next.setBorderPainted(false);
@@ -48,9 +70,6 @@ public class Scene2 extends javax.swing.JPanel {
             }
         });
         add(next, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/images/dialog/SCENE 2 DIALOG.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
@@ -61,7 +80,9 @@ public class Scene2 extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel klik;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel klik1;
     private javax.swing.JButton next;
     // End of variables declaration//GEN-END:variables
 }

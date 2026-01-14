@@ -34,15 +34,34 @@ public class Scene3 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        klik = new javax.swing.JLabel();
+        klik1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         next = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        klik.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        klik.setText("Klik di mana saja untuk lanjut");
-        add(klik, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 510, 180, 20));
+        klik1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        klik1.setForeground(new java.awt.Color(187, 187, 187));
+        klik1.setText("Klik di mana saja untuk lanjut");
+        add(klik1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 525, 260, 20));
+
+        jScrollPane1.setEnabled(false);
+        jScrollPane1.setFocusable(false);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(140, 90));
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(205, 135, 56));
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("SimSun-ExtG", 0, 11)); // NOI18N
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Ia melihat semuanya dari kejauhan, terikat oleh ketidakmampuan yang kejam.\nRumah tempat ia belajar arti pulang runtuh menjadi bara.Jalan batu yang \nmengingat setiap langkahnya terbelah dan tenggelam dalam api.Sungai yang\ndulu jernih kini memantulkan langit merah, seolah menolak mengenali dirinya \nsendiri. Tidak ada air mata yang langsung jatuh. Yang muncul lebih dulu \nadalah kehampaan, rongga besar yang menghisap suara, panas, dan rasa.\nTubuhnya tetap berdiri, namun sesuatu di dalam dirinya runtuh bersama desa \nitu. Ketika api mereda dan hanya abu yang tersisa, ia tidak lagi mengenali \ndunia yang membesarkannya.");
+        jTextArea1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextArea1.setPreferredSize(new java.awt.Dimension(459, 112));
+        jScrollPane1.setViewportView(jTextArea1);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 410, 465, 118));
 
         next.setToolTipText("");
         next.setBorderPainted(false);
@@ -66,7 +85,9 @@ public class Scene3 extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel klik;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel klik1;
     private javax.swing.JButton next;
     // End of variables declaration//GEN-END:variables
 }
