@@ -70,7 +70,7 @@ public class FightLevel5 extends javax.swing.JPanel {
         PlayerHP1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         PlayerHP1.setForeground(new java.awt.Color(255, 255, 255));
         PlayerHP1.setText("Monster HP :");
-        add(PlayerHP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, -1, -1));
+        add(PlayerHP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 50, -1, -1));
 
         btnAttck.setBorder(javax.swing.BorderFactory.createTitledBorder("ATTACK"));
         btnAttck.setBorderPainted(false);
